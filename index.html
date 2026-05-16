@@ -908,7 +908,7 @@
   function roleShort(note){
     if(!note) return '';
     if(note.gender==='other') return note.otherLabel||'Other';
-    const map={male:'M',female:'F',kid:'Kid',grandma:'GM',grandpa:'GP',uncle:'U',aunt:'A'};
+    const map={male:'Male',female:'F',kid:'Kid',grandma:'GM',grandpa:'GP',uncle:'U',aunt:'A'};
     return map[note.gender]||note.gender;
   }
 
