@@ -89,11 +89,9 @@
   .btn-purple:disabled{opacity:.45;cursor:not-allowed}
   .toolbar-sep{width:1px;height:24px;background:var(--border);margin:0 4px}
 
-  .sel-info{font-size:.82rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .sel-info{font-size:.82rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:8px}
   .sel-count-badge{background:var(--purple);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
-  /* Banner always one row — buttons shrink text but never wrap */
-  .sel-actions{display:flex;gap:6px;flex-wrap:nowrap;align-items:center;min-width:0}
-  .sel-actions .btn{flex:1 1 0;min-width:0;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:8px 10px;font-size:.78rem}
+  .sel-actions{display:flex;gap:8px;flex-wrap:wrap}
 
   /* PROGRESS */
   #progressWrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;display:none}
@@ -145,7 +143,7 @@
   .note-tag.grandpa{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
   .note-tag.uncle{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
   .note-tag.aunt{background:#fdf4ff;color:#9333ea;border-color:#d8b4fe}
-  .note-tag.other{background:var(--amber-light);color:var(--amber);border-color:#fde68a}
+  .note-tag.custom{background:var(--amber-light);color:var(--amber);border-color:#fde68a}
 
   /* ACTION CELL */
   .action-cell{display:flex;flex-direction:row;gap:4px;align-items:center;flex-wrap:wrap}
@@ -178,28 +176,45 @@
   .sel-line-ts{font-family:'DM Mono',monospace;color:var(--accent);font-size:.68rem;flex-shrink:0}
   .sel-line-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .form-label{font-size:.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block;letter-spacing:.04em}
-
-  /* ROLE OPTIONS GRID */
-  .role-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
-  .role-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
-  .role-opt:hover{border-color:var(--border-hover);background:var(--surface)}
-  .role-opt.selected-male{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
-  .role-opt.selected-female{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
-  .role-opt.selected-kid{border-color:#fde047;background:#fefce8;color:#a16207}
-  .role-opt.selected-grandma{border-color:#f9a8d4;background:#fdf2f8;color:#be185d}
-  .role-opt.selected-grandpa{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
-  .role-opt.selected-uncle{border-color:#86efac;background:#f0fdf4;color:#15803d}
-  .role-opt.selected-aunt{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
-  .role-opt.selected-other{border-color:#fde68a;background:var(--amber-light);color:var(--amber)}
-  .role-opt-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0}
-
-  /* OTHER input shown inline when "Other" selected */
-  .other-input-wrap{display:none;margin-top:10px}
-  .other-input-wrap.visible{display:block}
-  .other-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .15s}
-  .other-input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
-
+  .gender-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+  .gender-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
+  .gender-opt:hover{border-color:var(--border-hover);background:var(--surface)}
+  .gender-opt.selected-male{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .gender-opt.selected-female{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
+  .gender-opt.selected-both{border-color:#86efac;background:#f0fdf4;color:#16a34a}
+  .gender-opt.selected-kid{border-color:#fde047;background:#fefce8;color:#a16207}
+  .gender-opt.selected-grandma{border-color:#f9a8d4;background:#fdf2f8;color:#be185d}
+  .gender-opt.selected-grandpa{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
+  .gender-opt.selected-uncle{border-color:#86efac;background:#f0fdf4;color:#15803d}
+  .gender-opt.selected-aunt{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
+  .gender-opt-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+  .gender-opt-icon.m{background:#dbeafe;color:#2563eb}
+  .gender-opt-icon.f{background:#fce7f3;color:#db2777}
+  .gender-opt-icon.b{background:#dcfce7;color:#16a34a}
+  .note-textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.82rem;line-height:1.6;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);resize:vertical;min-height:72px;transition:border-color .15s}
+  .note-textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
   .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+
+  /* SUMMARY SECTION */
+  #summaryWrap{display:none;margin-top:28px}
+  .summary-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+  .summary-title{font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+  .summary-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .summary-card-head{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:8px}
+  .summary-card-title{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+  .summary-note-item{padding:14px 16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}
+  .summary-note-item:last-child{border-bottom:none}
+  .summary-note-gender{flex-shrink:0}
+  .summary-note-content{}
+  .summary-note-timestamps{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text-muted);margin-bottom:4px;display:flex;flex-wrap:wrap;gap:4px}
+  .ts-mini{background:var(--accent-light);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.67rem}
+  .summary-note-text{font-size:.82rem;line-height:1.5;color:var(--text)}
+  .summary-note-actions{display:flex;gap:4px;flex-shrink:0}
+  .summary-empty{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:.82rem}
+  .gender-pill{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid;letter-spacing:.03em}
+  .gender-pill.male{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .gender-pill.female{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .gender-pill.both{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0}
 
   /* TOAST */
   #toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:10px 18px;border-radius:8px;font-size:.78rem;font-weight:500;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:999;box-shadow:var(--shadow-lg)}
@@ -283,17 +298,13 @@
     .mobile-edit-actions{display:flex;gap:8px;margin-top:8px}
     .mobile-edit-actions .btn{flex:1;justify-content:center;padding:10px 8px;font-size:.8rem}
 
+    .summary-note-item{grid-template-columns:1fr;gap:8px}
+    .summary-note-actions{justify-content:flex-end}
+
     .toolbar{gap:6px}
     .btn{padding:8px 12px;font-size:.78rem}
 
-    /* Banner stays one row on mobile — shrink text further */
-    #selectionBanner{padding:8px 10px;gap:6px}
-    .sel-info{font-size:.72rem;gap:5px}
-    .sel-actions{gap:4px}
-    .sel-actions .btn{padding:7px 6px;font-size:.7rem;gap:3px}
-    .sel-actions .btn svg{display:none}
-
-    .role-options{grid-template-columns:1fr 1fr;}
+    #selectionBanner{padding:10px 12px}
   }
 </style>
 </head>
@@ -344,6 +355,10 @@
       Translate All
     </button>
     <div class="toolbar-sep"></div>
+    <button class="btn btn-purple" id="selectModeBtn" onclick="toggleSelectMode()" style="display:none">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Select Rows
+    </button>
     <div class="toolbar-sep" id="sep2" style="display:none"></div>
     <button class="btn btn-outline" onclick="copyKhmerOnly()" id="copyKhBtn" style="display:none">
       <svg viewBox="0 0 24 24"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.2L14.8 2H10a2 2 0 0 0-2 2z"/><path d="M14 2v5h5M4 8H2v12a2 2 0 0 0 2 2h10"/></svg>
@@ -369,20 +384,20 @@
   </div>
 
   <!-- SELECTION BANNER — sticky so it follows while scrolling through results -->
-  <div id="selectionBanner" style="display:none;position:sticky;top:68px;z-index:90;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 8px rgba(124,58,237,.12);">
+  <div id="selectionBanner" style="display:none;position:sticky;top:68px;z-index:90;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius);padding:12px 16px;margin-bottom:16px;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;box-shadow:0 2px 8px rgba(124,58,237,.12);">
     <div class="sel-info">
-      <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0"><path d="M9 11l3 3L22 4"/></svg>
-      <span id="selCountText" style="white-space:nowrap">0 rows selected</span>
+      <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round"><path d="M9 11l3 3L22 4"/></svg>
+      <span id="selCountText">0 rows selected</span>
       <span class="sel-count-badge" id="selCountBadge">0</span>
     </div>
     <div class="sel-actions">
-      <button class="btn btn-outline" onclick="selectAll()">Select All</button>
-      <button class="btn btn-outline" onclick="clearSelection()">Deselect All</button>
+      <button class="btn btn-outline" style="font-size:.78rem;padding:7px 12px" onclick="selectAll()">Select All</button>
+      <button class="btn btn-outline" style="font-size:.78rem;padding:7px 12px" onclick="clearSelection()">Deselect All</button>
       <button class="btn btn-purple" id="addNoteBtn" onclick="openNoteModal()" disabled>
         <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Add Note
       </button>
-      <button class="btn btn-ghost" onclick="toggleSelectMode()">Cancel</button>
+      <button class="btn btn-ghost" style="font-size:.78rem;padding:7px 12px" onclick="toggleSelectMode()">Cancel</button>
     </div>
   </div>
 
@@ -413,6 +428,29 @@
     </div>
   </div>
 
+  <!-- NOTES SUMMARY -->
+  <div id="summaryWrap">
+    <div class="summary-header">
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Character Notes Summary
+        <span class="result-badge" id="notesCountBadge" style="background:var(--purple-light);color:var(--purple)">0 notes</span>
+      </div>
+      <button class="btn btn-outline" onclick="copySummary()" style="font-size:.78rem;padding:7px 12px">
+        <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+        Copy Summary
+      </button>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-head">
+        <svg viewBox="0 0 24 24" width="13" height="13" style="stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <div class="summary-card-title">Character Annotations</div>
+      </div>
+      <div id="summaryContainer">
+        <div class="summary-empty">No notes added yet. Select rows and add character notes.</div>
+      </div>
+    </div>
+  </div>
 </main>
 
 <!-- NOTE MODAL -->
@@ -432,37 +470,33 @@
         <div class="form-label">Selected Lines</div>
         <div class="modal-selected-lines" id="modalSelectedLines"></div>
       </div>
-      <div>
+      <div style="margin-bottom:4px">
         <div class="form-label">Speaker Role</div>
-        <div class="role-options">
-          <div class="role-opt" id="gOpt-male" onclick="selectGender('male')">
-            <div class="role-opt-icon" style="background:#dbeafe;color:#2563eb">M</div><span>Male</span>
+        <div class="gender-options" style="grid-template-columns:1fr 1fr 1fr;gap:7px">
+          <div class="gender-opt" id="gOpt-male" onclick="selectGender('male')">
+            <div class="gender-opt-icon m">M</div><span>Male</span>
           </div>
-          <div class="role-opt" id="gOpt-female" onclick="selectGender('female')">
-            <div class="role-opt-icon" style="background:#fce7f3;color:#db2777">F</div><span>Female</span>
+          <div class="gender-opt" id="gOpt-female" onclick="selectGender('female')">
+            <div class="gender-opt-icon f">F</div><span>Female</span>
           </div>
-          <div class="role-opt" id="gOpt-kid" onclick="selectGender('kid')">
-            <div class="role-opt-icon" style="background:#fef9c3;color:#a16207">K</div><span>Kid</span>
+          <div class="gender-opt" id="gOpt-kid" onclick="selectGender('kid')">
+            <div class="gender-opt-icon" style="background:#fef9c3;color:#a16207">K</div><span>Kid</span>
           </div>
-          <div class="role-opt" id="gOpt-grandma" onclick="selectGender('grandma')">
-            <div class="role-opt-icon" style="background:#fce7f3;color:#be185d">GM</div><span>Grandma</span>
+          <div class="gender-opt" id="gOpt-grandma" onclick="selectGender('grandma')">
+            <div class="gender-opt-icon" style="background:#fce7f3;color:#be185d">GM</div><span>Grandma</span>
           </div>
-          <div class="role-opt" id="gOpt-grandpa" onclick="selectGender('grandpa')">
-            <div class="role-opt-icon" style="background:#dbeafe;color:#1d4ed8">GP</div><span>Grandpa</span>
+          <div class="gender-opt" id="gOpt-grandpa" onclick="selectGender('grandpa')">
+            <div class="gender-opt-icon" style="background:#dbeafe;color:#1d4ed8">GP</div><span>Grandpa</span>
           </div>
-          <div class="role-opt" id="gOpt-uncle" onclick="selectGender('uncle')">
-            <div class="role-opt-icon" style="background:#dcfce7;color:#15803d">U</div><span>Uncle</span>
+          <div class="gender-opt" id="gOpt-uncle" onclick="selectGender('uncle')">
+            <div class="gender-opt-icon" style="background:#dcfce7;color:#15803d">U</div><span>Uncle</span>
           </div>
-          <div class="role-opt" id="gOpt-aunt" onclick="selectGender('aunt')">
-            <div class="role-opt-icon" style="background:#fdf4ff;color:#9333ea">A</div><span>Aunt</span>
+          <div class="gender-opt" id="gOpt-aunt" onclick="selectGender('aunt')">
+            <div class="gender-opt-icon" style="background:#fdf4ff;color:#9333ea">A</div><span>Aunt</span>
           </div>
-          <div class="role-opt" id="gOpt-other" onclick="selectGender('other')">
-            <div class="role-opt-icon" style="background:#fef3c7;color:#d97706">?</div><span>Other</span>
+          <div class="gender-opt" id="gOpt-both" onclick="selectGender('both')" style="grid-column:span 2">
+            <div class="gender-opt-icon b">M+F</div><span>Both / Dialogue</span>
           </div>
-        </div>
-        <!-- "Other" text input, shown only when Other is selected -->
-        <div class="other-input-wrap" id="otherInputWrap">
-          <input type="text" class="other-input" id="otherLabelInput" placeholder="Describe this role (e.g. Narrator, Boss…)" maxlength="40"/>
         </div>
       </div>
     </div>
@@ -487,8 +521,6 @@
   let notes = [];
   let editingNoteIdx = null;
   let modalGender = '';
-
-  const ALL_ROLES = ['male','female','kid','grandma','grandpa','uncle','aunt','other'];
 
   // --- PARSE ---
   function parseSubtitleText(raw) {
@@ -556,7 +588,7 @@
     document.getElementById('headerStats').style.display='flex';
     document.getElementById('progressWrap').style.display='block';
     document.getElementById('translateBtn').disabled=true;
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id=>document.getElementById(id).style.display='none');
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>document.getElementById(id).style.display='none');
     document.getElementById('sep2').style.display='none';
     renderTable();
     updateHeaderStats();
@@ -576,9 +608,9 @@
     document.getElementById('progressFill').style.background='var(--green)';
     document.getElementById('progressLabel').style.color='var(--green)';
     document.getElementById('translateBtn').disabled=false;
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id=>{ document.getElementById(id).style.display='inline-flex'; });
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>{ document.getElementById(id).style.display='inline-flex'; });
     document.getElementById('sep2').style.display='block';
-    showToast('Translation complete — tap any Khmer cell to select rows');
+    showToast('Translation complete — '+total+' lines');
   }
 
   function updateProgress(done,total,label){
@@ -622,10 +654,9 @@
       let noteTagHTML='';
       if(l.noteIdx!==null&&l.noteIdx!==undefined&&notes[l.noteIdx]){
         const n=notes[l.noteIdx];
-        noteTagHTML=`<div class="note-tag ${n.gender}">${roleShort(n)}</div>`;
+        noteTagHTML=`<div class="note-tag ${n.gender}">${roleShort(n.gender)}</div>`;
       }
-      // Clicking the khmer cell activates select mode and toggles this row
-      kmContent=`<div class="khmer-cell" style="cursor:pointer" onclick="khmerCellClick(${i});event.stopPropagation()" title="Click to select">${escHtml(l.km)}${noteTagHTML}</div>`;
+      kmContent=`<div class="khmer-cell">${escHtml(l.km)}${noteTagHTML}</div>`;
     }
 
     let actions='<div class="action-cell"></div>';
@@ -716,26 +747,16 @@
   function toggleSelectMode(){
     isSelectMode=!isSelectMode;
     selectedRows.clear();
+    const btn=document.getElementById('selectModeBtn');
     const banner=document.getElementById('selectionBanner');
     if(isSelectMode){
+      btn.style.background='var(--purple)'; btn.style.color='#fff';
       banner.style.display='flex';
     } else {
+      btn.style.background=''; btn.style.color='';
       banner.style.display='none';
     }
     translatedData.forEach((_,i)=>renderRow(i));
-    updateSelectionUI();
-  }
-
-  // Clicking a khmer cell activates select mode (if not already) and toggles that row
-  function khmerCellClick(i){
-    if(!isSelectMode){
-      isSelectMode=true;
-      document.getElementById('selectionBanner').style.display='flex';
-    }
-    // Toggle this row's selection
-    if(selectedRows.has(i)) selectedRows.delete(i); else selectedRows.add(i);
-    // Re-render all rows so checkboxes and select-mode cursors update
-    translatedData.forEach((_,j)=>renderRow(j));
     updateSelectionUI();
   }
 
@@ -771,6 +792,8 @@
   function quickNote(i){
     if(!isSelectMode){
       isSelectMode=true;
+      document.getElementById('selectModeBtn').style.background='var(--purple)';
+      document.getElementById('selectModeBtn').style.color='#fff';
       document.getElementById('selectionBanner').style.display='flex';
       translatedData.forEach((_,j)=>renderRow(j));
     }
@@ -783,9 +806,7 @@
   function openNoteModal(){
     if(!selectedRows.size){ showToast('Select at least one row'); return; }
     editingNoteIdx=null; modalGender='';
-    ALL_ROLES.forEach(g=>{ const el=document.getElementById(`gOpt-${g}`); if(el) el.className='role-opt'; });
-    document.getElementById('otherInputWrap').classList.remove('visible');
-    document.getElementById('otherLabelInput').value='';
+    ALL_ROLES.forEach(g=>{ const el=document.getElementById(`gOpt-${g}`); if(el) el.className='gender-opt'; });
     const container=document.getElementById('modalSelectedLines');
     container.innerHTML='';
     [...selectedRows].sort((a,b)=>a-b).forEach(i=>{
@@ -802,33 +823,23 @@
     editingNoteIdx=null;
   }
 
+  const ALL_ROLES=['male','female','kid','grandma','grandpa','uncle','aunt','both'];
+
   function selectGender(g){
     modalGender=g;
     ALL_ROLES.forEach(opt=>{
       const el=document.getElementById(`gOpt-${opt}`);
       if(!el) return;
-      el.className='role-opt';
+      // Remove any selected class
+      el.className='gender-opt';
       if(opt===g) el.classList.add(`selected-${opt}`);
     });
-    // Show/hide "Other" text input
-    const wrap=document.getElementById('otherInputWrap');
-    if(g==='other'){
-      wrap.classList.add('visible');
-      document.getElementById('otherLabelInput').focus();
-    } else {
-      wrap.classList.remove('visible');
-    }
   }
 
   function saveNote(){
     if(!modalGender){ showToast('Please select a role'); return; }
-    let otherLabel='';
-    if(modalGender==='other'){
-      otherLabel=document.getElementById('otherLabelInput').value.trim();
-      if(!otherLabel){ showToast('Please describe the role'); return; }
-    }
     const indices=[...selectedRows].sort((a,b)=>a-b);
-    const noteObj={ gender:modalGender, otherLabel, text:'', indices:[...indices], timestamps:indices.map(i=>translatedData[i].ts) };
+    const noteObj={ gender:modalGender, text:'', indices:[...indices], timestamps:indices.map(i=>translatedData[i].ts) };
 
     if(editingNoteIdx!==null){
       notes[editingNoteIdx].indices.forEach(i=>{ if(translatedData[i]) translatedData[i].noteIdx=null; });
@@ -844,9 +855,52 @@
     // Exit select mode and clear selection
     isSelectMode=false;
     selectedRows.clear();
+    document.getElementById('selectModeBtn').style.background='';
+    document.getElementById('selectModeBtn').style.color='';
     document.getElementById('selectionBanner').style.display='none';
     translatedData.forEach((_,i)=>renderRow(i));
+    renderSummary();
     showToast('Note saved');
+  }
+
+  // --- SUMMARY RENDER ---
+  function renderSummary(){
+    const wrap=document.getElementById('summaryWrap');
+    const container=document.getElementById('summaryContainer');
+    const activeNotes=notes.filter(n=>n&&n.indices.length>0);
+    document.getElementById('notesCountBadge').textContent=`${activeNotes.length} note${activeNotes.length!==1?'s':''}`;
+
+    if(!activeNotes.length){
+      wrap.style.display='block';
+      container.innerHTML='<div class="summary-empty">No notes added yet. Select rows and add character notes.</div>';
+      return;
+    }
+    wrap.style.display='block';
+    container.innerHTML='';
+
+    notes.forEach((n,ni)=>{
+      if(!n) return;
+      const item=document.createElement('div'); item.className='summary-note-item';
+      const gLabel=roleFull(n.gender);
+      const tsHTML=n.timestamps.map(ts=>`<span class="ts-mini">${escHtml(ts)}</span>`).join('');
+      item.innerHTML=`
+        <div class="summary-note-gender">
+          <div class="gender-pill ${n.gender}">${roleShort(n.gender)} ${gLabel}</div>
+        </div>
+        <div class="summary-note-content">
+          <div class="summary-note-timestamps">${tsHTML}</div>
+        </div>
+        <div class="summary-note-actions">
+          <button class="icon-btn edit-btn" onclick="editNote(${ni})" title="Edit note">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="icon-btn cancel-btn" onclick="deleteNote(${ni})" title="Delete note">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+      `;
+      container.appendChild(item);
+    });
   }
 
   function editNote(ni){
@@ -854,27 +908,13 @@
     editingNoteIdx=ni;
     selectedRows.clear();
     n.indices.forEach(i=>selectedRows.add(i));
-    if(!isSelectMode){
-      isSelectMode=true;
-      document.getElementById('selectionBanner').style.display='flex';
-      translatedData.forEach((_,i)=>renderRow(i));
-    }
+    if(!isSelectMode){ isSelectMode=true; document.getElementById('selectionBanner').style.display='flex'; translatedData.forEach((_,i)=>renderRow(i)); }
     updateSelectionUI();
     modalGender=n.gender;
     ALL_ROLES.forEach(opt=>{
       const el=document.getElementById(`gOpt-${opt}`); if(!el) return;
-      el.className='role-opt'+(opt===n.gender?` selected-${opt}`:'');
+      el.className='gender-opt'+(opt===n.gender?` selected-${opt}`:'');
     });
-    // Restore other label if applicable
-    const wrap=document.getElementById('otherInputWrap');
-    const otherInp=document.getElementById('otherLabelInput');
-    if(n.gender==='other'){
-      wrap.classList.add('visible');
-      otherInp.value=n.otherLabel||'';
-    } else {
-      wrap.classList.remove('visible');
-      otherInp.value='';
-    }
     const container=document.getElementById('modalSelectedLines'); container.innerHTML='';
     n.indices.forEach(i=>{
       const l=translatedData[i]; if(!l) return;
@@ -891,33 +931,28 @@
       notes[ni]=null;
     }
     translatedData.forEach((_,i)=>renderRow(i));
+    renderSummary();
     showToast('Note deleted');
   }
 
   // --- COPY ---
 
-  // Returns copy label for a role (used in exported text)
-  function genderLabel(note){
-    if(!note) return '';
-    if(note.gender==='other') return `(${note.otherLabel||'Other'})`;
-    const map={male:'(Male)',female:'(Female)',kid:'(Kid)',grandma:'(Grandma)',grandpa:'(Grandpa)',uncle:'(Uncle)',aunt:'(Aunt)'};
-    return map[note.gender]||`(${note.gender})`;
+  // Returns copy label for a role
+  function genderLabel(gender){
+    const map={male:'(M)',female:'(F)',kid:'(Kid)',grandma:'(Grandma)',grandpa:'(Grandpa)',uncle:'(Uncle)',aunt:'(Aunt)',both:'(M+F)'};
+    return map[gender]||`(${gender})`;
   }
 
-  // Short badge label shown on rows and pills
-  function roleShort(note){
-    if(!note) return '';
-    if(note.gender==='other') return note.otherLabel||'Other';
-    const map={male:'M',female:'F',kid:'Kid',grandma:'GM',grandpa:'GP',uncle:'U',aunt:'A'};
-    return map[note.gender]||note.gender;
+  // Returns short display label for a role
+  function roleShort(gender){
+    const map={male:'M',female:'F',kid:'Kid',grandma:'GM',grandpa:'GP',uncle:'U',aunt:'A',both:'M+F'};
+    return map[gender]||gender;
   }
 
-  // Full label for summary pills
-  function roleFull(note){
-    if(!note) return '';
-    if(note.gender==='other') return note.otherLabel||'Other';
-    const map={male:'Male',female:'Female',kid:'Kid',grandma:'Grandma',grandpa:'Grandpa',uncle:'Uncle',aunt:'Aunt'};
-    return map[note.gender]||note.gender;
+  // Returns full display label for a role
+  function roleFull(gender){
+    const map={male:'Male',female:'Female',kid:'Kid',grandma:'Grandma',grandpa:'Grandpa',uncle:'Uncle',aunt:'Aunt',both:'Both / Dialogue'};
+    return map[gender]||gender;
   }
 
   // Get note object for a row index, or null
@@ -927,16 +962,20 @@
     return null;
   }
 
+  // Build grouped output: emits a gender header (M)/(F)/(M+F) whenever the
+  // gender of the current line differs from the previous line's gender.
+  // Lines with no note are treated as having gender null (no header printed).
   function buildGroupedKhmer(){
     const lines=[];
-    let lastGender=undefined;
+    let lastGender=undefined; // undefined = nothing emitted yet
     translatedData.forEach((l,i)=>{
       if(!l.km) return;
       const n=noteFor(i);
       const g=n?n.gender:null;
+      // Emit gender header when gender changes (and there IS a gender)
       if(g!==null&&g!==lastGender){
-        if(lines.length>0) lines.push('');
-        lines.push(genderLabel(n));
+        if(lines.length>0) lines.push(''); // blank separator before new group
+        lines.push(genderLabel(g));
         lastGender=g;
       } else if(g===null){
         lastGender=null;
@@ -963,7 +1002,7 @@
       const g=n?n.gender:null;
       if(g!==null&&g!==lastGender){
         if(lines.length>0) lines.push('');
-        lines.push(genderLabel(n));
+        lines.push(genderLabel(g));
         lastGender=g;
       } else if(g===null){
         lastGender=null;
@@ -974,6 +1013,20 @@
     navigator.clipboard.writeText(lines.join('\n')).then(()=>showToast('Bilingual script copied'));
   }
 
+  function copySummary(){
+    const activeNotes=notes.filter(n=>n&&n.indices.length>0);
+    if(!activeNotes.length){ showToast('No notes to copy'); return; }
+    const lines=['=== CHARACTER NOTES SUMMARY ===',''];
+    activeNotes.forEach((n,i)=>{
+      const gLabel=n.gender==='male'?'Male Speaker':n.gender==='female'?'Female Speaker':'Both / Dialogue Exchange';
+      lines.push(`[Note ${i+1}] ${gLabel}`);
+      lines.push(`Timestamps: ${n.timestamps.map(ts=>`(${ts})`).join(', ')}`);
+      if(n.text) lines.push(`Note: ${n.text}`);
+      lines.push('');
+    });
+    navigator.clipboard.writeText(lines.join('\n')).then(()=>showToast('Summary copied'));
+  }
+
   function clearAll(){
     if(isTranslating){ showToast('Please wait for translation to finish'); return; }
     translatedData=[]; parsedLines=[]; notes=[]; selectedRows.clear(); isSelectMode=false;
@@ -982,9 +1035,10 @@
     document.getElementById('resultWrap').style.display='none';
     document.getElementById('progressWrap').style.display='none';
     document.getElementById('headerStats').style.display='none';
+    document.getElementById('summaryWrap').style.display='none';
     document.getElementById('selectionBanner').style.display='none';
     document.getElementById('translateBtn').disabled=true;
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id=>document.getElementById(id).style.display='none');
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>document.getElementById(id).style.display='none');
     document.getElementById('sep2').style.display='none';
     document.getElementById('linesContainer').innerHTML=`
       <div class="empty-state">
