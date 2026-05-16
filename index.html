@@ -24,6 +24,10 @@
     --red-light:#fef2f2;
     --amber:#d97706;
     --amber-light:#fffbeb;
+    --purple:#7c3aed;
+    --purple-light:#f5f3ff;
+    --pink:#db2777;
+    --pink-light:#fdf2f8;
     --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
     --shadow-md:0 4px 12px rgba(0,0,0,.08);
     --shadow-lg:0 8px 24px rgba(0,0,0,.1);
@@ -31,44 +35,16 @@
     --radius-sm:6px;
   }
   html{font-size:14px}
-  body{
-    font-family:'DM Sans',sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-  }
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
 
   /* HEADER */
-  header{
-    border-bottom:1px solid var(--border);
-    padding:18px 32px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    position:sticky;
-    top:0;
-    background:rgba(255,255,255,.95);
-    backdrop-filter:blur(10px);
-    z-index:100;
-  }
+  header{border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100}
   .logo{display:flex;align-items:center;gap:10px}
-  .logo-icon{
-    width:32px;height:32px;
-    background:var(--accent);
-    border-radius:8px;
-    display:flex;align-items:center;justify-content:center;
-  }
+  .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center}
   .logo-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round}
   .logo-text{font-weight:600;font-size:1rem;letter-spacing:-.02em;color:var(--text)}
   .logo-sub{font-size:.75rem;color:var(--text-muted);font-weight:400;margin-left:2px}
-  .header-stats{
-    font-size:.75rem;
-    color:var(--text-muted);
-    font-family:'DM Mono',monospace;
-    display:flex;gap:16px;
-  }
+  .header-stats{font-size:.75rem;color:var(--text-muted);font-family:'DM Mono',monospace;display:flex;gap:16px;flex-wrap:wrap}
   .stat-item{display:flex;align-items:center;gap:5px}
   .stat-dot{width:6px;height:6px;border-radius:50%}
   .stat-dot.green{background:var(--green)}
@@ -79,106 +55,25 @@
   main{flex:1;padding:28px 32px;max-width:1300px;margin:0 auto;width:100%}
 
   /* INPUT PANEL */
-  .input-panel{
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    background:var(--bg);
-    overflow:hidden;
-    box-shadow:var(--shadow);
-    margin-bottom:20px;
-  }
-  .panel-header{
-    padding:12px 16px;
-    border-bottom:1px solid var(--border);
-    background:var(--surface);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .panel-label{
-    font-size:.7rem;
-    font-weight:600;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-    display:flex;align-items:center;gap:6px;
-  }
+  .input-panel{border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
+  .panel-header{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between}
+  .panel-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:6px}
   .panel-label svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
   .panel-actions{display:flex;gap:6px;align-items:center}
-
-  textarea{
-    width:100%;
-    border:none;
-    outline:none;
-    resize:none;
-    font-family:'DM Mono',monospace;
-    font-size:.82rem;
-    line-height:1.7;
-    padding:16px;
-    background:var(--bg);
-    color:var(--text);
-    min-height:130px;
-  }
+  textarea{width:100%;border:none;outline:none;resize:none;font-family:'DM Mono',monospace;font-size:.82rem;line-height:1.7;padding:16px;background:var(--bg);color:var(--text);min-height:130px}
   textarea::placeholder{color:var(--text-muted)}
 
   /* PARSE PREVIEW */
-  #parsePreview{
-    border-top:1px solid var(--border);
-    padding:12px 16px;
-    background:var(--surface);
-    display:none;
-  }
-  .parse-title{
-    font-size:.68rem;
-    font-weight:600;
-    letter-spacing:.07em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-    margin-bottom:8px;
-    display:flex;align-items:center;gap:6px;
-  }
+  #parsePreview{border-top:1px solid var(--border);padding:12px 16px;background:var(--surface);display:none}
+  .parse-title{font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
   .parse-chips{display:flex;flex-wrap:wrap;gap:5px}
-  .parse-chip{
-    font-family:'DM Mono',monospace;
-    font-size:.72rem;
-    background:var(--bg);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:3px 10px;
-    color:var(--text-secondary);
-    white-space:nowrap;
-    max-width:260px;
-    overflow:hidden;
-    text-overflow:ellipsis;
-  }
+  .parse-chip{font-family:'DM Mono',monospace;font-size:.72rem;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:3px 10px;color:var(--text-secondary);white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis}
   .parse-chip span.ts{color:var(--accent);font-weight:500;margin-right:4px}
-  .parse-more{
-    font-size:.72rem;
-    color:var(--text-muted);
-    padding:3px 8px;
-    font-family:'DM Mono',monospace;
-  }
+  .parse-more{font-size:.72rem;color:var(--text-muted);padding:3px 8px;font-family:'DM Mono',monospace}
 
   /* TOOLBAR */
-  .toolbar{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-  }
-  .btn{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:9px 18px;
-    border-radius:var(--radius-sm);
-    font-family:'DM Sans',sans-serif;
-    font-size:.82rem;
-    font-weight:500;
-    cursor:pointer;
-    border:none;
-    transition:all .15s;
-    white-space:nowrap;
-  }
+  .toolbar{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;border:none;transition:all .15s;white-space:nowrap}
   .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
   .btn-primary{background:var(--accent);color:#fff}
   .btn-primary:hover:not(:disabled){background:var(--accent-hover)}
@@ -189,20 +84,31 @@
   .btn-ghost:hover{background:var(--surface);color:var(--text)}
   .btn-danger{background:var(--red-light);color:var(--red);border:1px solid #fecaca}
   .btn-danger:hover{background:#fee2e2}
-  .btn-success{background:var(--green-light);color:var(--green);border:1px solid #bbf7d0}
-  .btn-success:hover{background:#dcfce7}
-
+  .btn-purple{background:var(--purple-light);color:var(--purple);border:1px solid #ddd6fe}
+  .btn-purple:hover{background:#ede9fe}
+  .btn-purple:disabled{opacity:.45;cursor:not-allowed}
   .toolbar-sep{width:1px;height:24px;background:var(--border);margin:0 4px}
 
-  /* PROGRESS */
-  #progressWrap{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    padding:14px 16px;
-    margin-bottom:20px;
+  /* SELECTION MODE BANNER */
+  #selectionBanner{
     display:none;
+    background:var(--purple-light);
+    border:1px solid #c4b5fd;
+    border-radius:var(--radius);
+    padding:12px 16px;
+    margin-bottom:16px;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    flex-wrap:wrap;
   }
+  #selectionBanner.active{display:flex}
+  .sel-info{font-size:.82rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:8px}
+  .sel-count-badge{background:var(--purple);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
+  .sel-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* PROGRESS */
+  #progressWrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;display:none}
   .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
   .progress-label{font-size:.78rem;color:var(--text-secondary);font-weight:500}
   .progress-count{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text-muted)}
@@ -211,156 +117,116 @@
 
   /* RESULTS TABLE */
   #resultWrap{display:none}
-  .result-header{
-    display:flex;align-items:center;justify-content:space-between;
-    margin-bottom:12px;
-    flex-wrap:wrap;gap:8px;
-  }
-  .result-title{
-    font-size:.8rem;
-    font-weight:600;
-    color:var(--text-secondary);
-    letter-spacing:.03em;
-    display:flex;align-items:center;gap:8px;
-  }
-  .result-badge{
-    background:var(--accent-light);
-    color:var(--accent);
-    font-size:.68rem;
-    font-weight:600;
-    letter-spacing:.04em;
-    padding:2px 8px;
-    border-radius:20px;
-    font-family:'DM Mono',monospace;
-  }
-  .result-copy-actions{display:flex;gap:6px;flex-wrap:wrap}
+  .result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+  .result-title{font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+  .result-badge{background:var(--accent-light);color:var(--accent);font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
+  .table-wrap{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
 
-  .table-wrap{
-    border:1px solid var(--border);
-    border-radius:var(--radius);
-    overflow:hidden;
-    box-shadow:var(--shadow);
-  }
-  .table-head{
-    display:grid;
-    grid-template-columns:72px 1fr 1fr 52px;
-    background:var(--surface);
-    border-bottom:1px solid var(--border);
-    padding:10px 16px;
-    gap:12px;
-  }
-  .th{
-    font-size:.67rem;
-    font-weight:600;
-    letter-spacing:.09em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-  }
+  /* TABLE HEAD */
+  .table-head{display:grid;grid-template-columns:36px 72px 1fr 1fr 90px;background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;gap:12px;align-items:center}
+  .th{font-size:.67rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
   .th.center{text-align:center}
 
-  #linesContainer{}
-  .line-row{
-    display:grid;
-    grid-template-columns:72px 1fr 1fr 52px;
-    padding:12px 16px;
-    gap:12px;
-    border-bottom:1px solid var(--border);
-    align-items:start;
-    transition:background .1s;
-  }
+  /* ROW */
+  .line-row{display:grid;grid-template-columns:36px 72px 1fr 1fr 90px;padding:12px 16px;gap:12px;border-bottom:1px solid var(--border);align-items:start;transition:background .1s;cursor:default}
   .line-row:last-child{border-bottom:none}
   .line-row:hover{background:var(--surface)}
-  .line-row.editing{background:var(--accent-light)}
+  .line-row.editing{background:var(--accent-light)!important}
   .line-row.error-row .khmer-cell{color:var(--amber)}
+  .line-row.selected{background:#f5f3ff!important;border-left:3px solid var(--purple)}
+  .line-row.select-mode{cursor:pointer}
+  .line-row.select-mode:hover{background:#faf5ff}
 
-  .ts-cell{
-    font-family:'DM Mono',monospace;
-    font-size:.72rem;
-    font-weight:500;
-    color:var(--accent);
-    padding-top:2px;
-    white-space:nowrap;
-  }
-  .zh-cell{
-    font-size:.85rem;
-    line-height:1.6;
-    color:var(--text);
-    word-break:break-all;
-  }
-  .khmer-cell{
-    font-size:.85rem;
-    line-height:1.6;
-    color:var(--text);
-    word-break:break-word;
-  }
+  /* CHECKBOX CELL */
+  .check-cell{display:flex;align-items:center;justify-content:center;padding-top:2px}
+  .row-checkbox{width:16px;height:16px;cursor:pointer;accent-color:var(--purple);flex-shrink:0}
+
+  .ts-cell{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);padding-top:2px;white-space:nowrap}
+  .zh-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-all}
+  .khmer-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-word}
   .khmer-cell.pending{color:var(--text-muted);font-style:italic;font-size:.78rem}
   .khmer-cell.translating{color:var(--amber);font-style:italic;font-size:.78rem}
 
-  /* EDIT */
-  .khmer-edit-input{
-    width:100%;
-    border:1px solid var(--accent);
-    border-radius:4px;
-    padding:5px 8px;
-    font-size:.85rem;
-    line-height:1.6;
-    font-family:'DM Sans',sans-serif;
-    outline:none;
-    background:white;
-    color:var(--text);
-    resize:vertical;
-    min-height:38px;
-    box-shadow:0 0 0 3px rgba(37,99,235,.1);
-  }
-  .action-cell{display:flex;flex-direction:column;gap:4px;align-items:center}
-  .icon-btn{
-    width:28px;height:28px;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:5px;
-    cursor:pointer;
-    border:none;
-    background:transparent;
-    color:var(--text-muted);
-    transition:all .12s;
-    flex-shrink:0;
-  }
+  /* NOTE BADGE on row */
+  .note-tag{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:20px;border:1px solid}
+  .note-tag.male{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .note-tag.female{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .note-tag.both{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0}
+  .note-tag.custom{background:var(--amber-light);color:var(--amber);border-color:#fde68a}
+
+  /* ACTION CELL */
+  .action-cell{display:flex;flex-direction:row;gap:4px;align-items:center;flex-wrap:wrap}
+  .icon-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all .12s;flex-shrink:0}
   .icon-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
   .icon-btn:hover{background:var(--surface);color:var(--text)}
   .icon-btn.save-btn:hover{background:var(--green-light);color:var(--green)}
   .icon-btn.cancel-btn:hover{background:var(--red-light);color:var(--red)}
   .icon-btn.edit-btn:hover{background:var(--accent-light);color:var(--accent)}
+  .icon-btn.note-btn:hover{background:var(--purple-light);color:var(--purple)}
+
+  /* EDIT INPUT */
+  .khmer-edit-input{width:100%;border:1px solid var(--accent);border-radius:4px;padding:5px 8px;font-size:.85rem;line-height:1.6;font-family:'DM Sans',sans-serif;outline:none;background:white;color:var(--text);resize:vertical;min-height:38px;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+
+  /* NOTE MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
+  .modal-overlay.open{opacity:1;pointer-events:all}
+  .modal{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);width:100%;max-width:480px;overflow:hidden;transform:translateY(12px);transition:transform .2s}
+  .modal-overlay.open .modal{transform:translateY(0)}
+  .modal-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .modal-title{font-size:.9rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
+  .modal-title svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round}
+  .modal-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;color:var(--text-muted);border-radius:5px}
+  .modal-close:hover{background:var(--surface);color:var(--text)}
+  .modal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+  .modal-body{padding:18px 20px}
+  .modal-selected-lines{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:16px;max-height:120px;overflow-y:auto}
+  .modal-selected-lines .sel-line-item{font-size:.75rem;color:var(--text-secondary);padding:2px 0;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid var(--border)}
+  .modal-selected-lines .sel-line-item:last-child{border-bottom:none}
+  .sel-line-ts{font-family:'DM Mono',monospace;color:var(--accent);font-size:.68rem;flex-shrink:0}
+  .sel-line-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .form-label{font-size:.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block;letter-spacing:.04em}
+  .gender-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+  .gender-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
+  .gender-opt:hover{border-color:var(--border-hover);background:var(--surface)}
+  .gender-opt.selected-male{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .gender-opt.selected-female{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
+  .gender-opt.selected-both{border-color:#86efac;background:#f0fdf4;color:#16a34a}
+  .gender-opt-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0}
+  .gender-opt-icon.m{background:#dbeafe;color:#2563eb}
+  .gender-opt-icon.f{background:#fce7f3;color:#db2777}
+  .gender-opt-icon.b{background:#dcfce7;color:#16a34a}
+  .note-textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.82rem;line-height:1.6;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);resize:vertical;min-height:72px;transition:border-color .15s}
+  .note-textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+  .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+
+  /* SUMMARY SECTION */
+  #summaryWrap{display:none;margin-top:28px}
+  .summary-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+  .summary-title{font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.03em;display:flex;align-items:center;gap:8px}
+  .summary-card{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  .summary-card-head{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;gap:8px}
+  .summary-card-title{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted)}
+  .summary-note-item{padding:14px 16px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start}
+  .summary-note-item:last-child{border-bottom:none}
+  .summary-note-gender{flex-shrink:0}
+  .summary-note-content{}
+  .summary-note-timestamps{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text-muted);margin-bottom:4px;display:flex;flex-wrap:wrap;gap:4px}
+  .ts-mini{background:var(--accent-light);color:var(--accent);padding:1px 6px;border-radius:4px;font-size:.67rem}
+  .summary-note-text{font-size:.82rem;line-height:1.5;color:var(--text)}
+  .summary-note-actions{display:flex;gap:4px;flex-shrink:0}
+  .summary-empty{text-align:center;padding:40px 20px;color:var(--text-muted);font-size:.82rem}
+  .gender-pill{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid;letter-spacing:.03em}
+  .gender-pill.male{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .gender-pill.female{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .gender-pill.both{background:#f0fdf4;color:#16a34a;border-color:#bbf7d0}
 
   /* TOAST */
-  #toast{
-    position:fixed;bottom:24px;right:24px;
-    background:#111;
-    color:#fff;
-    padding:10px 18px;
-    border-radius:8px;
-    font-size:.78rem;
-    font-weight:500;
-    opacity:0;
-    transform:translateY(8px);
-    transition:all .2s;
-    pointer-events:none;
-    z-index:999;
-    box-shadow:var(--shadow-lg);
-  }
+  #toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:10px 18px;border-radius:8px;font-size:.78rem;font-weight:500;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:999;box-shadow:var(--shadow-lg)}
   #toast.show{opacity:1;transform:translateY(0)}
 
   /* EMPTY STATE */
-  .empty-state{
-    text-align:center;
-    padding:60px 32px;
-    color:var(--text-muted);
-  }
-  .empty-icon{
-    width:48px;height:48px;
-    border:1.5px dashed var(--border);
-    border-radius:12px;
-    margin:0 auto 16px;
-    display:flex;align-items:center;justify-content:center;
-  }
+  .empty-state{text-align:center;padding:60px 32px;color:var(--text-muted)}
+  .empty-icon{width:48px;height:48px;border:1.5px dashed var(--border);border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
   .empty-icon svg{width:22px;height:22px;stroke:var(--border);fill:none;stroke-width:1.5;stroke-linecap:round}
   .empty-title{font-size:.9rem;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
   .empty-desc{font-size:.78rem;line-height:1.6;max-width:300px;margin:0 auto}
@@ -371,16 +237,86 @@
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
   ::-webkit-scrollbar-thumb:hover{background:var(--border-hover)}
 
+  /* ===== MOBILE ===== */
   @media(max-width:700px){
-    header{padding:14px 16px}
-    main{padding:16px}
-    .table-head,.line-row{grid-template-columns:60px 1fr}
-    .th:nth-child(3),.th:nth-child(4),.action-cell{display:none}
-    .zh-cell,.khmer-cell{display:block}
-    .line-row{display:block}
-    .ts-cell{display:inline;margin-right:6px;font-size:.68rem}
-    .zh-cell{display:inline;margin-right:4px}
-    .khmer-cell{display:block;margin-top:4px;padding-left:0;border-left:2px solid var(--border);padding-left:8px}
+    header{padding:12px 14px;gap:8px}
+    .header-stats{gap:10px;font-size:.68rem}
+    main{padding:12px 14px}
+
+    /* TABLE HEAD - mobile hides khmer + action col label */
+    .table-head{grid-template-columns:32px 56px 1fr 44px;padding:8px 12px;gap:8px}
+    .table-head .th:nth-child(4){display:none}
+    .table-head .th:nth-child(5){text-align:left}
+
+    /* ROW - mobile stacked layout */
+    .line-row{
+      display:flex;
+      flex-direction:column;
+      padding:12px 12px 12px 12px;
+      gap:0;
+      position:relative;
+    }
+    .line-row.selected{border-left:3px solid var(--purple);padding-left:9px}
+
+    .check-cell{
+      position:absolute;
+      top:14px;
+      left:12px;
+      width:20px;
+    }
+    .ts-cell{
+      display:inline-block;
+      font-size:.68rem;
+      padding-top:0;
+      margin-left:28px;
+      margin-bottom:2px;
+    }
+    .zh-cell{
+      font-size:.82rem;
+      margin-left:28px;
+      margin-bottom:6px;
+      word-break:break-word;
+    }
+    /* KHMER on mobile — full width with left accent bar */
+    .khmer-cell{
+      font-size:.82rem;
+      margin-left:28px;
+      padding-left:10px;
+      border-left:2px solid var(--border);
+      word-break:break-word;
+      margin-bottom:4px;
+    }
+    .khmer-cell.pending,.khmer-cell.translating{font-size:.75rem}
+
+    /* ACTION CELL on mobile — inline row of buttons */
+    .action-cell{
+      display:flex;
+      flex-direction:row;
+      gap:4px;
+      margin-left:28px;
+      margin-top:6px;
+      flex-wrap:wrap;
+    }
+    .icon-btn{width:32px;height:32px}
+
+    /* EDIT MODE on mobile — full width stack */
+    .line-row.editing{padding:12px}
+    .mobile-edit-wrap{width:100%;margin-top:6px}
+    .mobile-edit-label{font-size:.68rem;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+    .khmer-edit-input{min-height:60px;font-size:.82rem}
+    .mobile-edit-actions{display:flex;gap:8px;margin-top:8px}
+    .mobile-edit-actions .btn{flex:1;justify-content:center;padding:10px 8px;font-size:.8rem}
+
+    /* SUMMARY on mobile */
+    .summary-note-item{grid-template-columns:1fr;gap:8px}
+    .summary-note-actions{justify-content:flex-end}
+
+    /* TOOLBAR wrap */
+    .toolbar{gap:6px}
+    .btn{padding:8px 12px;font-size:.78rem}
+
+    /* selection banner */
+    #selectionBanner{padding:10px 12px}
   }
 </style>
 </head>
@@ -392,7 +328,7 @@
       <svg viewBox="0 0 24 24"><path d="M5 8l4 4-4 4M13 12h6"/></svg>
     </div>
     <div>
-      <div class="logo-text">AI SHORT DRAMA <span class="logo-sub"> Translation Tool</span> </div>
+      <div class="logo-text">AI SHORT DRAMA <span class="logo-sub">Translation Tool</span></div>
     </div>
   </div>
   <div class="header-stats" id="headerStats" style="display:none">
@@ -411,7 +347,7 @@
         Paste Subtitle Text
       </div>
       <div class="panel-actions">
-        <button class="btn btn-ghost" id="clearInputBtn" style="font-size:.75rem;padding:5px 10px" onclick="clearInput()">Clear</button>
+        <button class="btn btn-ghost" style="font-size:.75rem;padding:5px 10px" onclick="clearInput()">Clear</button>
       </div>
     </div>
     <textarea id="inputText" placeholder="Paste your subtitle text here..." rows="5" oninput="handleInput()"></textarea>
@@ -431,6 +367,11 @@
       Translate All
     </button>
     <div class="toolbar-sep"></div>
+    <button class="btn btn-purple" id="selectModeBtn" onclick="toggleSelectMode()" style="display:none">
+      <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      Select Rows
+    </button>
+    <div class="toolbar-sep" id="sep2" style="display:none"></div>
     <button class="btn btn-outline" onclick="copyKhmerOnly()" id="copyKhBtn" style="display:none">
       <svg viewBox="0 0 24 24"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.2L14.8 2H10a2 2 0 0 0-2 2z"/><path d="M14 2v5h5M4 8H2v12a2 2 0 0 0 2 2h10"/></svg>
       Copy Khmer
@@ -445,6 +386,24 @@
     </button>
   </div>
 
+  <!-- SELECTION BANNER -->
+  <div id="selectionBanner">
+    <div class="sel-info">
+      <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round"><path d="M9 11l3 3L22 4"/></svg>
+      <span id="selCountText">0 rows selected</span>
+      <span class="sel-count-badge" id="selCountBadge">0</span>
+    </div>
+    <div class="sel-actions">
+      <button class="btn btn-outline" style="font-size:.78rem;padding:7px 12px" onclick="selectAll()">Select All</button>
+      <button class="btn btn-outline" style="font-size:.78rem;padding:7px 12px" onclick="clearSelection()">Deselect All</button>
+      <button class="btn btn-purple" id="addNoteBtn" onclick="openNoteModal()" disabled>
+        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Add Note
+      </button>
+      <button class="btn btn-ghost" style="font-size:.78rem;padding:7px 12px" onclick="toggleSelectMode()">Cancel</button>
+    </div>
+  </div>
+
   <!-- PROGRESS -->
   <div id="progressWrap">
     <div class="progress-top">
@@ -454,7 +413,7 @@
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
   </div>
 
-  <!-- RESULTS -->
+  <!-- RESULTS TABLE -->
   <div id="resultWrap">
     <div class="result-header">
       <div class="result-title">
@@ -464,23 +423,95 @@
     </div>
     <div class="table-wrap">
       <div class="table-head">
+        <div class="th" id="thCheck"></div>
         <div class="th">Time</div>
-        <div class="th">Chinese</div>
+        <div class="th">Chinese / Khmer</div>
         <div class="th">Khmer</div>
-        <div class="th center">Edit</div>
+        <div class="th center">Actions</div>
       </div>
       <div id="linesContainer">
         <div class="empty-state">
-          <div class="empty-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
+          <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
           <div class="empty-title">No lines yet</div>
           <div class="empty-desc">Paste your subtitle text above and click Translate All to begin.</div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- NOTES SUMMARY -->
+  <div id="summaryWrap">
+    <div class="summary-header">
+      <div class="result-title">
+        <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Character Notes Summary
+        <span class="result-badge" id="notesCountBadge" style="background:var(--purple-light);color:var(--purple)">0 notes</span>
+      </div>
+      <button class="btn btn-outline" onclick="copySummary()" style="font-size:.78rem;padding:7px 12px">
+        <svg viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+        Copy Summary
+      </button>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-head">
+        <svg viewBox="0 0 24 24" width="13" height="13" style="stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <div class="summary-card-title">Character Annotations</div>
+      </div>
+      <div id="summaryContainer">
+        <div class="summary-empty">No notes added yet. Select rows and add character notes.</div>
+      </div>
+    </div>
+  </div>
 </main>
+
+<!-- NOTE MODAL -->
+<div class="modal-overlay" id="noteModal">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title">
+        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Add Character Note
+      </div>
+      <button class="modal-close" onclick="closeNoteModal()">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:12px">
+        <div class="form-label">Selected Lines</div>
+        <div class="modal-selected-lines" id="modalSelectedLines"></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <div class="form-label">Speaker Gender</div>
+        <div class="gender-options">
+          <div class="gender-opt" id="gOpt-male" onclick="selectGender('male')">
+            <div class="gender-opt-icon m">M</div>
+            <span>Male</span>
+          </div>
+          <div class="gender-opt" id="gOpt-female" onclick="selectGender('female')">
+            <div class="gender-opt-icon f">F</div>
+            <span>Female</span>
+          </div>
+          <div class="gender-opt" id="gOpt-both" onclick="selectGender('both')" style="grid-column:span 2">
+            <div class="gender-opt-icon b">M+F</div>
+            <span>Both / Dialogue Exchange</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="noteText">Note / Action Description</label>
+        <textarea class="note-textarea" id="noteText" placeholder="e.g. Male lead confronting female lead, emotional scene..."></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeNoteModal()">Cancel</button>
+      <button class="btn btn-purple" onclick="saveNote()">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Save Note
+      </button>
+    </div>
+  </div>
+</div>
 
 <div id="toast"></div>
 
@@ -488,20 +519,21 @@
   let parsedLines = [];
   let translatedData = [];
   let isTranslating = false;
+  let isSelectMode = false;
+  let selectedRows = new Set();
+  let notes = [];
+  let editingNoteIdx = null;
+  let modalGender = '';
 
-  // --- PARSE INPUT ---
+  // --- PARSE ---
   function parseSubtitleText(raw) {
-    // Split on timestamp pattern (\d+:\d+) — handles inline pasted format
-    // Match all occurrences of (M:SS) or (MM:SS) followed by text
     const pattern = /\((\d{1,2}:\d{2})\)\s*([\s\S]*?)(?=\(\d{1,2}:\d{2}\)|$)/g;
     const results = [];
     let match;
     while ((match = pattern.exec(raw)) !== null) {
       const ts = match[1].trim();
       const text = match[2].trim();
-      if (ts && text) {
-        results.push({ ts, zh: text, km: '', status: 'pending' });
-      }
+      if (ts && text) results.push({ ts, zh: text, km: '', status: 'pending' });
     }
     return results;
   }
@@ -511,271 +543,444 @@
     const preview = document.getElementById('parsePreview');
     const chips = document.getElementById('parseChips');
     const btn = document.getElementById('translateBtn');
-
-    if (!raw) {
-      preview.style.display = 'none';
-      parsedLines = [];
-      btn.disabled = true;
-      return;
-    }
-
+    if (!raw) { preview.style.display='none'; parsedLines=[]; btn.disabled=true; return; }
     parsedLines = parseSubtitleText(raw);
-
-    if (parsedLines.length === 0) {
-      preview.style.display = 'none';
-      btn.disabled = true;
-      return;
-    }
-
-    // Show preview chips
-    preview.style.display = 'block';
-    chips.innerHTML = '';
-    const showMax = 8;
-    parsedLines.slice(0, showMax).forEach(l => {
-      const c = document.createElement('div');
-      c.className = 'parse-chip';
-      c.innerHTML = `<span class="ts">(${l.ts})</span>${escHtml(l.zh)}`;
-      chips.appendChild(c);
+    if (!parsedLines.length) { preview.style.display='none'; btn.disabled=true; return; }
+    preview.style.display='block';
+    chips.innerHTML='';
+    const max=8;
+    parsedLines.slice(0,max).forEach(l=>{
+      const c=document.createElement('div'); c.className='parse-chip';
+      c.innerHTML=`<span class="ts">(${l.ts})</span>${escHtml(l.zh)}`; chips.appendChild(c);
     });
-    if (parsedLines.length > showMax) {
-      const more = document.createElement('div');
-      more.className = 'parse-more';
-      more.textContent = `+${parsedLines.length - showMax} more`;
-      chips.appendChild(more);
-    }
-
-    btn.disabled = false;
+    if(parsedLines.length>max){ const m=document.createElement('div'); m.className='parse-more'; m.textContent=`+${parsedLines.length-max} more`; chips.appendChild(m); }
+    btn.disabled=false;
   }
 
   function clearInput() {
-    document.getElementById('inputText').value = '';
-    document.getElementById('parsePreview').style.display = 'none';
-    parsedLines = [];
-    document.getElementById('translateBtn').disabled = true;
+    document.getElementById('inputText').value='';
+    document.getElementById('parsePreview').style.display='none';
+    parsedLines=[];
+    document.getElementById('translateBtn').disabled=true;
   }
 
   // --- TRANSLATION ---
   async function translateZhToKm(text) {
-    // Try MyMemory API
     try {
-      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=zh-CN|km`;
-      const r = await fetch(url);
-      const d = await r.json();
-      if (d.responseStatus === 200 && d.responseData && d.responseData.translatedText) {
-        const t = d.responseData.translatedText;
-        if (t && t !== text && !/MYMEMORY WARNING/i.test(t)) return t;
+      const url=`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=zh-CN|km`;
+      const r=await fetch(url); const d=await r.json();
+      if(d.responseStatus===200&&d.responseData&&d.responseData.translatedText){
+        const t=d.responseData.translatedText;
+        if(t&&t!==text&&!/MYMEMORY WARNING/i.test(t)) return t;
       }
-    } catch(e) {}
-    // Fallback: LibreTranslate public
+    } catch(e){}
     try {
-      const r = await fetch('https://libretranslate.com/translate', {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({q: text, source:'zh', target:'km', format:'text'})
-      });
-      const d = await r.json();
-      if (d.translatedText) return d.translatedText;
-    } catch(e) {}
+      const r=await fetch('https://libretranslate.com/translate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:text,source:'zh',target:'km',format:'text'})});
+      const d=await r.json(); if(d.translatedText) return d.translatedText;
+    } catch(e){}
     return '[Translation unavailable]';
   }
 
   function sleep(ms){ return new Promise(r=>setTimeout(r,ms)) }
 
   async function startTranslation() {
-    if (isTranslating || parsedLines.length === 0) return;
-    isTranslating = true;
-
-    // Init translated data
-    translatedData = parsedLines.map(l => ({...l, km:'', status:'pending'}));
-
-    // Show results table
-    document.getElementById('resultWrap').style.display = 'block';
-    document.getElementById('headerStats').style.display = 'flex';
-    document.getElementById('progressWrap').style.display = 'block';
-    document.getElementById('translateBtn').disabled = true;
-    document.getElementById('copyKhBtn').style.display = 'none';
-    document.getElementById('copyBiBtn').style.display = 'none';
-    document.getElementById('clearAllBtn').style.display = 'none';
-
+    if(isTranslating||!parsedLines.length) return;
+    isTranslating=true;
+    translatedData=parsedLines.map(l=>({...l,km:'',status:'pending',noteIdx:null}));
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('headerStats').style.display='flex';
+    document.getElementById('progressWrap').style.display='block';
+    document.getElementById('translateBtn').disabled=true;
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>document.getElementById(id).style.display='none');
+    document.getElementById('sep2').style.display='none';
     renderTable();
     updateHeaderStats();
-
-    const total = translatedData.length;
-    document.getElementById('lineCountBadge').textContent = `${total} lines`;
-
-    for (let i = 0; i < total; i++) {
-      translatedData[i].status = 'translating';
-      renderRow(i);
-      updateProgress(i, total, `Translating line ${i+1} of ${total}...`);
-
-      const km = await translateZhToKm(translatedData[i].zh);
-      translatedData[i].km = km;
-      translatedData[i].status = km.includes('[Translation') ? 'error' : 'done';
-      renderRow(i);
-      updateHeaderStats();
-
-      if (i < total - 1) await sleep(350);
+    const total=translatedData.length;
+    document.getElementById('lineCountBadge').textContent=`${total} lines`;
+    for(let i=0;i<total;i++){
+      translatedData[i].status='translating'; renderRow(i);
+      updateProgress(i,total,`Translating line ${i+1} of ${total}...`);
+      const km=await translateZhToKm(translatedData[i].zh);
+      translatedData[i].km=km;
+      translatedData[i].status=km.includes('[Translation')?'error':'done';
+      renderRow(i); updateHeaderStats();
+      if(i<total-1) await sleep(350);
     }
-
-    isTranslating = false;
-    updateProgress(total, total, 'Translation complete');
-    document.getElementById('progressFill').style.background = 'var(--green)';
-    document.getElementById('progressLabel').style.color = 'var(--green)';
-    document.getElementById('translateBtn').disabled = false;
-    document.getElementById('copyKhBtn').style.display = 'inline-flex';
-    document.getElementById('copyBiBtn').style.display = 'inline-flex';
-    document.getElementById('clearAllBtn').style.display = 'inline-flex';
-    showToast('Translation complete — ' + total + ' lines');
+    isTranslating=false;
+    updateProgress(total,total,'Translation complete');
+    document.getElementById('progressFill').style.background='var(--green)';
+    document.getElementById('progressLabel').style.color='var(--green)';
+    document.getElementById('translateBtn').disabled=false;
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>{ document.getElementById(id).style.display='inline-flex'; });
+    document.getElementById('sep2').style.display='block';
+    showToast('Translation complete — '+total+' lines');
   }
 
-  function updateProgress(done, total, label) {
-    document.getElementById('progressLabel').textContent = label;
-    document.getElementById('progressCount').textContent = `${done} / ${total}`;
-    document.getElementById('progressFill').style.width = `${total ? (done/total*100) : 0}%`;
+  function updateProgress(done,total,label){
+    document.getElementById('progressLabel').textContent=label;
+    document.getElementById('progressCount').textContent=`${done} / ${total}`;
+    document.getElementById('progressFill').style.width=`${total?(done/total*100):0}%`;
   }
 
-  function updateHeaderStats() {
-    const total = translatedData.length;
-    const done = translatedData.filter(l=>l.status==='done'||l.status==='error').length;
-    const pending = total - done;
-    document.getElementById('statTotal').textContent = total + ' lines';
-    document.getElementById('statDone').textContent = done + ' done';
-    document.getElementById('statPending').textContent = pending + ' pending';
+  function updateHeaderStats(){
+    const total=translatedData.length;
+    const done=translatedData.filter(l=>l.status==='done'||l.status==='error').length;
+    document.getElementById('statTotal').textContent=total+' lines';
+    document.getElementById('statDone').textContent=done+' done';
+    document.getElementById('statPending').textContent=(total-done)+' pending';
   }
 
   // --- RENDER TABLE ---
-  function renderTable() {
-    const c = document.getElementById('linesContainer');
-    c.innerHTML = '';
-    translatedData.forEach((_, i) => {
-      const row = createRowEl(i);
-      c.appendChild(row);
-    });
+  function renderTable(){
+    const c=document.getElementById('linesContainer'); c.innerHTML='';
+    translatedData.forEach((_,i)=>{ c.appendChild(createRowEl(i)); });
   }
 
-  function createRowEl(i) {
-    const row = document.createElement('div');
-    row.className = 'line-row';
-    row.id = `row-${i}`;
-    row.innerHTML = buildRowHTML(i);
+  function createRowEl(i){
+    const row=document.createElement('div');
+    row.className='line-row'+(isSelectMode?' select-mode':'')+(selectedRows.has(i)?' selected':'');
+    row.id=`row-${i}`;
+    row.innerHTML=buildRowHTML(i);
+    if(isSelectMode) row.onclick=(e)=>{ if(!e.target.closest('.icon-btn')&&!e.target.closest('.row-checkbox')) toggleRowSelect(i); };
     return row;
   }
 
-  function buildRowHTML(i) {
-    const l = translatedData[i];
-    let kmContent = '';
-    if (l.status === 'pending') {
-      kmContent = `<div class="khmer-cell pending">Waiting...</div>`;
-    } else if (l.status === 'translating') {
-      kmContent = `<div class="khmer-cell translating">Translating...</div>`;
-    } else {
-      kmContent = `<div class="khmer-cell" id="km-text-${i}">${escHtml(l.km)}</div>`;
+  function buildRowHTML(i){
+    const l=translatedData[i];
+    const isSelected=selectedRows.has(i);
+    const checkHTML=`<div class="check-cell"><input type="checkbox" class="row-checkbox" ${isSelected?'checked':''} onchange="onCheckChange(${i},this.checked)" onclick="event.stopPropagation()"/></div>`;
+
+    let kmContent='';
+    if(l.status==='pending') kmContent=`<div class="khmer-cell pending">Waiting...</div>`;
+    else if(l.status==='translating') kmContent=`<div class="khmer-cell translating">Translating...</div>`;
+    else {
+      let noteTagHTML='';
+      if(l.noteIdx!==null&&l.noteIdx!==undefined&&notes[l.noteIdx]){
+        const n=notes[l.noteIdx];
+        const gLabel=n.gender==='male'?'M':n.gender==='female'?'F':'M+F';
+        noteTagHTML=`<div class="note-tag ${n.gender}">${gLabel}</div>`;
+      }
+      kmContent=`<div class="khmer-cell">${escHtml(l.km)}${noteTagHTML}</div>`;
     }
 
-    const actions = (l.status === 'done' || l.status === 'error')
-      ? `<div class="action-cell">
-          <button class="icon-btn edit-btn" onclick="startEdit(${i})" title="Edit translation">
-            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-          </button>
-        </div>`
-      : `<div class="action-cell"></div>`;
+    let actions='<div class="action-cell"></div>';
+    if(l.status==='done'||l.status==='error'){
+      actions=`<div class="action-cell">
+        <button class="icon-btn edit-btn" onclick="startEdit(${i});event.stopPropagation()" title="Edit">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="icon-btn note-btn" onclick="quickNote(${i});event.stopPropagation()" title="Add Note">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="12" y1="17" x2="8" y2="17"/></svg>
+        </button>
+      </div>`;
+    }
 
-    return `
-      <div class="ts-cell">(${escHtml(l.ts)})</div>
-      <div class="zh-cell">${escHtml(l.zh)}</div>
-      ${kmContent}
-      ${actions}
-    `;
+    return `${checkHTML}<div class="ts-cell">(${escHtml(l.ts)})</div><div class="zh-cell">${escHtml(l.zh)}</div>${kmContent}${actions}`;
   }
 
-  function renderRow(i) {
-    const row = document.getElementById(`row-${i}`);
-    if (!row) {
-      const c = document.getElementById('linesContainer');
-      // If table was reset, append
-      if (c.querySelector('.empty-state')) c.innerHTML = '';
-      const newRow = createRowEl(i);
-      c.appendChild(newRow);
+  function renderRow(i){
+    const row=document.getElementById(`row-${i}`);
+    if(!row){
+      const c=document.getElementById('linesContainer');
+      if(c.querySelector('.empty-state')) c.innerHTML='';
+      c.appendChild(createRowEl(i));
     } else {
-      row.innerHTML = buildRowHTML(i);
-      if (translatedData[i].status === 'error') row.classList.add('error-row');
-      else row.classList.remove('error-row');
+      row.className='line-row'+(isSelectMode?' select-mode':'')+(selectedRows.has(i)?' selected':'');
+      if(translatedData[i].status==='error') row.classList.add('error-row');
+      row.innerHTML=buildRowHTML(i);
+      if(isSelectMode) row.onclick=(e)=>{ if(!e.target.closest('.icon-btn')&&!e.target.closest('.row-checkbox')) toggleRowSelect(i); };
     }
   }
 
-  // --- EDIT ---
-  function startEdit(i) {
-    const row = document.getElementById(`row-${i}`);
+  // --- EDIT (works on mobile & desktop) ---
+  function startEdit(i){
+    const row=document.getElementById(`row-${i}`);
     row.classList.add('editing');
-    const l = translatedData[i];
-    row.innerHTML = `
-      <div class="ts-cell">(${escHtml(l.ts)})</div>
-      <div class="zh-cell">${escHtml(l.zh)}</div>
-      <div>
-        <textarea class="khmer-edit-input" id="edit-input-${i}" rows="2">${escHtml(l.km)}</textarea>
-      </div>
-      <div class="action-cell">
-        <button class="icon-btn save-btn" onclick="saveEdit(${i})" title="Save">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        </button>
-        <button class="icon-btn cancel-btn" onclick="cancelEdit(${i})" title="Cancel">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-    `;
-    const inp = document.getElementById(`edit-input-${i}`);
-    inp.focus();
-    inp.setSelectionRange(inp.value.length, inp.value.length);
-    // Save on Ctrl+Enter
-    inp.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') saveEdit(i);
-      if (e.key === 'Escape') cancelEdit(i);
+    const l=translatedData[i];
+    const isMobile=window.innerWidth<=700;
+
+    if(isMobile){
+      // Mobile: stacked layout with full-width edit
+      row.innerHTML=`
+        <div class="check-cell"></div>
+        <div class="ts-cell">(${escHtml(l.ts)})</div>
+        <div class="zh-cell">${escHtml(l.zh)}</div>
+        <div class="mobile-edit-wrap">
+          <div class="mobile-edit-label">Khmer Translation</div>
+          <textarea class="khmer-edit-input" id="edit-input-${i}">${escHtml(l.km)}</textarea>
+          <div class="mobile-edit-actions">
+            <button class="btn btn-outline" onclick="cancelEdit(${i});event.stopPropagation()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveEdit(${i});event.stopPropagation()" style="background:var(--green)">Save</button>
+          </div>
+        </div>
+        <div class="action-cell"></div>
+      `;
+    } else {
+      // Desktop: grid layout
+      row.innerHTML=`
+        <div class="check-cell"></div>
+        <div class="ts-cell">(${escHtml(l.ts)})</div>
+        <div class="zh-cell">${escHtml(l.zh)}</div>
+        <div><textarea class="khmer-edit-input" id="edit-input-${i}" rows="2">${escHtml(l.km)}</textarea></div>
+        <div class="action-cell">
+          <button class="icon-btn save-btn" onclick="saveEdit(${i});event.stopPropagation()" title="Save">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="icon-btn cancel-btn" onclick="cancelEdit(${i});event.stopPropagation()" title="Cancel">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      `;
+    }
+
+    const inp=document.getElementById(`edit-input-${i}`);
+    if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length,inp.value.length);
+      inp.addEventListener('keydown',e=>{ if((e.ctrlKey||e.metaKey)&&e.key==='Enter') saveEdit(i); if(e.key==='Escape') cancelEdit(i); });
+    }
+  }
+
+  function saveEdit(i){
+    const inp=document.getElementById(`edit-input-${i}`); if(!inp) return;
+    const v=inp.value.trim();
+    translatedData[i].km=v;
+    translatedData[i].status=v?'done':'error';
+    renderRow(i); showToast('Saved');
+  }
+
+  function cancelEdit(i){ renderRow(i); }
+
+  // --- SELECT MODE ---
+  function toggleSelectMode(){
+    isSelectMode=!isSelectMode;
+    selectedRows.clear();
+    const btn=document.getElementById('selectModeBtn');
+    const banner=document.getElementById('selectionBanner');
+    if(isSelectMode){
+      btn.style.background='var(--purple)'; btn.style.color='#fff';
+      banner.classList.add('active');
+    } else {
+      btn.style.background=''; btn.style.color='';
+      banner.classList.remove('active');
+    }
+    translatedData.forEach((_,i)=>renderRow(i));
+    updateSelectionUI();
+  }
+
+  function toggleRowSelect(i){
+    if(!isSelectMode) return;
+    if(selectedRows.has(i)) selectedRows.delete(i); else selectedRows.add(i);
+    renderRow(i); updateSelectionUI();
+  }
+
+  function onCheckChange(i,checked){
+    if(checked) selectedRows.add(i); else selectedRows.delete(i);
+    renderRow(i); updateSelectionUI();
+  }
+
+  function updateSelectionUI(){
+    const n=selectedRows.size;
+    document.getElementById('selCountText').textContent=`${n} row${n!==1?'s':''} selected`;
+    document.getElementById('selCountBadge').textContent=n;
+    document.getElementById('addNoteBtn').disabled=n===0;
+  }
+
+  function selectAll(){
+    translatedData.forEach((_,i)=>{ if(translatedData[i].status==='done'||translatedData[i].status==='error') selectedRows.add(i); });
+    translatedData.forEach((_,i)=>renderRow(i)); updateSelectionUI();
+  }
+
+  function clearSelection(){
+    selectedRows.clear();
+    translatedData.forEach((_,i)=>renderRow(i)); updateSelectionUI();
+  }
+
+  // --- QUICK NOTE (single row) ---
+  function quickNote(i){
+    if(!isSelectMode){
+      isSelectMode=true;
+      document.getElementById('selectModeBtn').style.background='var(--purple)';
+      document.getElementById('selectModeBtn').style.color='#fff';
+      document.getElementById('selectionBanner').classList.add('active');
+      translatedData.forEach((_,j)=>renderRow(j));
+    }
+    selectedRows.clear(); selectedRows.add(i);
+    translatedData.forEach((_,j)=>renderRow(j));
+    updateSelectionUI(); openNoteModal();
+  }
+
+  // --- NOTE MODAL ---
+  function openNoteModal(){
+    if(!selectedRows.size){ showToast('Select at least one row'); return; }
+    editingNoteIdx=null; modalGender='';
+    // Clear UI
+    ['male','female','both'].forEach(g=>{ document.getElementById(`gOpt-${g}`).className='gender-opt'; });
+    document.getElementById('noteText').value='';
+    // Populate selected lines
+    const container=document.getElementById('modalSelectedLines');
+    container.innerHTML='';
+    [...selectedRows].sort((a,b)=>a-b).forEach(i=>{
+      const l=translatedData[i];
+      const div=document.createElement('div'); div.className='sel-line-item';
+      div.innerHTML=`<span class="sel-line-ts">(${escHtml(l.ts)})</span><span class="sel-line-text">${escHtml(l.zh)}</span>`;
+      container.appendChild(div);
+    });
+    document.getElementById('noteModal').classList.add('open');
+  }
+
+  function closeNoteModal(){
+    document.getElementById('noteModal').classList.remove('open');
+    editingNoteIdx=null;
+  }
+
+  function selectGender(g){
+    modalGender=g;
+    ['male','female','both'].forEach(opt=>{
+      const el=document.getElementById(`gOpt-${opt}`);
+      el.className='gender-opt'+(opt===g?` selected-${opt}`:'');
     });
   }
 
-  function saveEdit(i) {
-    const inp = document.getElementById(`edit-input-${i}`);
-    if (!inp) return;
-    const newVal = inp.value.trim();
-    translatedData[i].km = newVal;
-    translatedData[i].status = newVal ? 'done' : 'error';
-    renderRow(i);
-    showToast('Saved');
+  function saveNote(){
+    if(!modalGender){ showToast('Please select a gender'); return; }
+    const noteText=document.getElementById('noteText').value.trim();
+    const indices=[...selectedRows].sort((a,b)=>a-b);
+    const noteObj={ gender:modalGender, text:noteText, indices:[...indices], timestamps:indices.map(i=>translatedData[i].ts) };
+
+    if(editingNoteIdx!==null){
+      // Remove old note from rows
+      notes[editingNoteIdx].indices.forEach(i=>{ if(translatedData[i]) translatedData[i].noteIdx=null; });
+      notes[editingNoteIdx]=noteObj;
+      indices.forEach(i=>{ if(translatedData[i]) translatedData[i].noteIdx=editingNoteIdx; });
+    } else {
+      const nIdx=notes.length;
+      notes.push(noteObj);
+      indices.forEach(i=>{ if(translatedData[i]) translatedData[i].noteIdx=nIdx; });
+    }
+
+    closeNoteModal();
+    translatedData.forEach((_,i)=>renderRow(i));
+    renderSummary();
+    showToast('Note saved');
   }
 
-  function cancelEdit(i) {
-    renderRow(i);
+  // --- SUMMARY RENDER ---
+  function renderSummary(){
+    const wrap=document.getElementById('summaryWrap');
+    const container=document.getElementById('summaryContainer');
+    const activeNotes=notes.filter(n=>n&&n.indices.length>0);
+    document.getElementById('notesCountBadge').textContent=`${activeNotes.length} note${activeNotes.length!==1?'s':''}`;
+
+    if(!activeNotes.length){
+      wrap.style.display='block';
+      container.innerHTML='<div class="summary-empty">No notes added yet. Select rows and add character notes.</div>';
+      return;
+    }
+    wrap.style.display='block';
+    container.innerHTML='';
+
+    notes.forEach((n,ni)=>{
+      if(!n) return;
+      const item=document.createElement('div'); item.className='summary-note-item';
+      const gLabel=n.gender==='male'?'Male Speaker':n.gender==='female'?'Female Speaker':'Both / Dialogue';
+      const tsHTML=n.timestamps.map(ts=>`<span class="ts-mini">${escHtml(ts)}</span>`).join('');
+      item.innerHTML=`
+        <div class="summary-note-gender">
+          <div class="gender-pill ${n.gender}">${n.gender==='male'?'M':n.gender==='female'?'F':'M+F'} ${gLabel}</div>
+        </div>
+        <div class="summary-note-content">
+          <div class="summary-note-timestamps">${tsHTML}</div>
+          <div class="summary-note-text">${n.text?escHtml(n.text):'<span style="color:var(--text-muted);font-style:italic">No additional note text</span>'}</div>
+        </div>
+        <div class="summary-note-actions">
+          <button class="icon-btn edit-btn" onclick="editNote(${ni})" title="Edit note">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="icon-btn cancel-btn" onclick="deleteNote(${ni})" title="Delete note">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          </button>
+        </div>
+      `;
+      container.appendChild(item);
+    });
+  }
+
+  function editNote(ni){
+    const n=notes[ni]; if(!n) return;
+    editingNoteIdx=ni;
+    // Re-select the rows from this note
+    selectedRows.clear();
+    n.indices.forEach(i=>selectedRows.add(i));
+    if(!isSelectMode){ isSelectMode=true; document.getElementById('selectionBanner').classList.add('active'); translatedData.forEach((_,i)=>renderRow(i)); }
+    updateSelectionUI();
+    // Populate modal
+    modalGender=n.gender;
+    ['male','female','both'].forEach(opt=>{
+      document.getElementById(`gOpt-${opt}`).className='gender-opt'+(opt===n.gender?` selected-${opt}`:'');
+    });
+    document.getElementById('noteText').value=n.text||'';
+    const container=document.getElementById('modalSelectedLines'); container.innerHTML='';
+    n.indices.forEach(i=>{
+      const l=translatedData[i]; if(!l) return;
+      const div=document.createElement('div'); div.className='sel-line-item';
+      div.innerHTML=`<span class="sel-line-ts">(${escHtml(l.ts)})</span><span class="sel-line-text">${escHtml(l.zh)}</span>`;
+      container.appendChild(div);
+    });
+    document.getElementById('noteModal').classList.add('open');
+  }
+
+  function deleteNote(ni){
+    if(notes[ni]){
+      notes[ni].indices.forEach(i=>{ if(translatedData[i]) translatedData[i].noteIdx=null; });
+      notes[ni]=null;
+    }
+    translatedData.forEach((_,i)=>renderRow(i));
+    renderSummary();
+    showToast('Note deleted');
   }
 
   // --- COPY ---
-  function copyKhmerOnly() {
-    const done = translatedData.filter(l=>l.km);
-    if (!done.length) { showToast('No translations yet'); return; }
-    const text = done.map(l=>`(${l.ts}) ${l.km}`).join('\n');
+  function copyKhmerOnly(){
+    const done=translatedData.filter(l=>l.km);
+    if(!done.length){ showToast('No translations yet'); return; }
+    const text=done.map(l=>`(${l.ts}) ${l.km}`).join('\n');
     navigator.clipboard.writeText(text).then(()=>showToast('Khmer subtitles copied'));
   }
 
-  function copyBilingual() {
-    const done = translatedData.filter(l=>l.km);
-    if (!done.length) { showToast('No translations yet'); return; }
-    const text = done.map(l=>`(${l.ts}) ${l.zh}\n(${l.ts}) ${l.km}`).join('\n\n');
+  function copyBilingual(){
+    const done=translatedData.filter(l=>l.km);
+    if(!done.length){ showToast('No translations yet'); return; }
+    const text=done.map(l=>`(${l.ts}) ${l.zh}\n(${l.ts}) ${l.km}`).join('\n\n');
     navigator.clipboard.writeText(text).then(()=>showToast('Bilingual script copied'));
   }
 
-  function clearAll() {
-    if (isTranslating) { showToast('Please wait for translation to finish'); return; }
-    translatedData = [];
-    parsedLines = [];
-    document.getElementById('inputText').value = '';
-    document.getElementById('parsePreview').style.display = 'none';
-    document.getElementById('resultWrap').style.display = 'none';
-    document.getElementById('progressWrap').style.display = 'none';
-    document.getElementById('headerStats').style.display = 'none';
-    document.getElementById('translateBtn').disabled = true;
-    document.getElementById('copyKhBtn').style.display = 'none';
-    document.getElementById('copyBiBtn').style.display = 'none';
-    document.getElementById('clearAllBtn').style.display = 'none';
-    document.getElementById('linesContainer').innerHTML = `
+  function copySummary(){
+    const activeNotes=notes.filter(n=>n&&n.indices.length>0);
+    if(!activeNotes.length){ showToast('No notes to copy'); return; }
+    const lines=['=== CHARACTER NOTES SUMMARY ===',''];
+    activeNotes.forEach((n,i)=>{
+      const gLabel=n.gender==='male'?'Male Speaker':n.gender==='female'?'Female Speaker':'Both / Dialogue Exchange';
+      lines.push(`[Note ${i+1}] ${gLabel}`);
+      lines.push(`Timestamps: ${n.timestamps.map(ts=>`(${ts})`).join(', ')}`);
+      if(n.text) lines.push(`Note: ${n.text}`);
+      lines.push('');
+    });
+    navigator.clipboard.writeText(lines.join('\n')).then(()=>showToast('Summary copied'));
+  }
+
+  function clearAll(){
+    if(isTranslating){ showToast('Please wait for translation to finish'); return; }
+    translatedData=[]; parsedLines=[]; notes=[]; selectedRows.clear(); isSelectMode=false;
+    document.getElementById('inputText').value='';
+    document.getElementById('parsePreview').style.display='none';
+    document.getElementById('resultWrap').style.display='none';
+    document.getElementById('progressWrap').style.display='none';
+    document.getElementById('headerStats').style.display='none';
+    document.getElementById('summaryWrap').style.display='none';
+    document.getElementById('selectionBanner').classList.remove('active');
+    document.getElementById('translateBtn').disabled=true;
+    ['copyKhBtn','copyBiBtn','clearAllBtn','selectModeBtn'].forEach(id=>document.getElementById(id).style.display='none');
+    document.getElementById('sep2').style.display='none';
+    document.getElementById('linesContainer').innerHTML=`
       <div class="empty-state">
         <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <div class="empty-title">No lines yet</div>
@@ -784,20 +989,18 @@
   }
 
   // --- UTILS ---
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;');
+  function escHtml(str){
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'), 2200);
+  function showToast(msg){
+    const t=document.getElementById('toast'); t.textContent=msg;
+    t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2200);
   }
+
+  // Close modal on overlay click
+  document.getElementById('noteModal').addEventListener('click',function(e){ if(e.target===this) closeNoteModal(); });
 </script>
 </body>
 </html>
+```
