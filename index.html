@@ -11,15 +11,18 @@
     --bg:#ffffff;--surface:#f8f8f8;--border:#e8e8e8;--border-hover:#d0d0d0;
     --text:#111111;--text-secondary:#666666;--text-muted:#aaaaaa;
     --accent:#2563eb;--accent-light:#eff6ff;--accent-hover:#1d4ed8;
-    --green:#16a34a;--green-light:#f0fdf4;--red:#dc2626;--red-light:#fef2f2;
-    --amber:#d97706;--amber-light:#fffbeb;--purple:#7c3aed;--purple-light:#f5f3ff;
-    --pink:#db2777;--pink-light:#fdf2f8;
+    --green:#16a34a;--green-light:#f0fdf4;
+    --red:#dc2626;--red-light:#fef2f2;
+    --amber:#d97706;--amber-light:#fffbeb;
+    --purple:#7c3aed;--purple-light:#f5f3ff;
     --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
-    --shadow-md:0 4px 12px rgba(0,0,0,.08);--shadow-lg:0 8px 24px rgba(0,0,0,.1);
+    --shadow-md:0 4px 12px rgba(0,0,0,.08);
+    --shadow-lg:0 8px 24px rgba(0,0,0,.1);
     --radius:10px;--radius-sm:6px;
   }
   html{font-size:14px}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
   header{border-bottom:1px solid var(--border);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);z-index:100}
   .logo{display:flex;align-items:center;gap:10px}
   .logo-icon{width:32px;height:32px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center}
@@ -29,8 +32,12 @@
   .header-stats{font-size:.75rem;color:var(--text-muted);font-family:'DM Mono',monospace;display:flex;gap:16px;flex-wrap:wrap}
   .stat-item{display:flex;align-items:center;gap:5px}
   .stat-dot{width:6px;height:6px;border-radius:50%}
-  .stat-dot.green{background:var(--green)}.stat-dot.amber{background:var(--amber)}.stat-dot.blue{background:var(--accent)}
+  .stat-dot.green{background:var(--green)}
+  .stat-dot.amber{background:var(--amber)}
+  .stat-dot.blue{background:var(--accent)}
+
   main{flex:1;padding:28px 32px;max-width:1300px;margin:0 auto;width:100%}
+
   .input-panel{border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);overflow:hidden;box-shadow:var(--shadow);margin-bottom:20px}
   .panel-header{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:space-between}
   .panel-label{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);display:flex;align-items:center;gap:6px}
@@ -38,12 +45,14 @@
   .panel-actions{display:flex;gap:6px;align-items:center}
   textarea{width:100%;border:none;outline:none;resize:none;font-family:'DM Mono',monospace;font-size:.82rem;line-height:1.7;padding:16px;background:var(--bg);color:var(--text);min-height:130px}
   textarea::placeholder{color:var(--text-muted)}
+
   #parsePreview{border-top:1px solid var(--border);padding:12px 16px;background:var(--surface);display:none}
   .parse-title{font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:6px}
   .parse-chips{display:flex;flex-wrap:wrap;gap:5px}
   .parse-chip{font-family:'DM Mono',monospace;font-size:.72rem;background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:3px 10px;color:var(--text-secondary);white-space:nowrap;max-width:260px;overflow:hidden;text-overflow:ellipsis}
   .parse-chip span.ts{color:var(--accent);font-weight:500;margin-right:4px}
   .parse-more{font-size:.72rem;color:var(--text-muted);padding:3px 8px;font-family:'DM Mono',monospace}
+
   .toolbar{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:var(--radius-sm);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:500;cursor:pointer;border:none;transition:all .15s;white-space:nowrap}
   .btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
@@ -60,60 +69,80 @@
   .btn-purple:hover{background:#ede9fe}
   .btn-purple:disabled{opacity:.45;cursor:not-allowed}
   .toolbar-sep{width:1px;height:24px;background:var(--border);margin:0 4px}
+
+  /* SELECTION BANNER */
+  #selectionBanner{display:none;position:sticky;top:68px;z-index:90;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 8px rgba(124,58,237,.12)}
   .sel-info{font-size:.82rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:8px;flex-shrink:0}
   .sel-count-badge{background:var(--purple);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
   .sel-actions{display:flex;gap:6px;flex-wrap:nowrap;align-items:center;min-width:0}
-  .sel-actions .btn{flex:1 1 0;min-width:0;justify-content:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:8px 10px;font-size:.78rem}
+  .sel-actions .btn{justify-content:center;white-space:nowrap;padding:8px 12px;font-size:.78rem}
+
   #progressWrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:20px;display:none}
   .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
   .progress-label{font-size:.78rem;color:var(--text-secondary);font-weight:500}
   .progress-count{font-family:'DM Mono',monospace;font-size:.75rem;color:var(--text-muted)}
   .progress-bar-wrap{height:4px;background:var(--border);border-radius:4px;overflow:hidden}
   .progress-bar-fill{height:100%;background:var(--accent);border-radius:4px;transition:width .3s ease;width:0%}
+
   #resultWrap{display:none}
   .result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px}
   .result-title{font-size:.8rem;font-weight:600;color:var(--text-secondary);letter-spacing:.03em;display:flex;align-items:center;gap:8px}
   .result-badge{background:var(--accent-light);color:var(--accent);font-size:.68rem;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
   .table-wrap{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-  .table-head{display:grid;grid-template-columns:36px 72px 1fr 1fr 90px;background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;gap:12px;align-items:center}
+
+  .table-head{display:grid;grid-template-columns:36px 72px 1fr 1fr 62px;background:var(--surface);border-bottom:1px solid var(--border);padding:10px 16px;gap:12px;align-items:center}
   .th{font-size:.67rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--text-muted)}
   .th.center{text-align:center}
-  .line-row{display:grid;grid-template-columns:36px 72px 1fr 1fr 90px;padding:12px 16px;gap:12px;border-bottom:1px solid var(--border);align-items:start;transition:background .1s;cursor:default}
+
+  .line-row{display:grid;grid-template-columns:36px 72px 1fr 1fr 62px;padding:12px 16px;gap:12px;border-bottom:1px solid var(--border);align-items:start;transition:background .1s;cursor:default}
   .line-row:last-child{border-bottom:none}
   .line-row:hover{background:var(--surface)}
   .line-row.editing{background:var(--accent-light)!important}
   .line-row.error-row .khmer-cell{color:var(--amber)}
   .line-row.selected{background:#f5f3ff!important;border-left:3px solid var(--purple)}
-  .line-row.select-mode{cursor:pointer}
-  .line-row.select-mode:hover{background:#faf5ff}
+
   .check-cell{display:flex;align-items:center;justify-content:center;padding-top:2px}
   .row-checkbox{width:16px;height:16px;cursor:pointer;accent-color:var(--purple);flex-shrink:0}
+
   .ts-cell{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);padding-top:2px;white-space:nowrap}
-  .zh-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-all}
+
+  /* zh-cell: always clickable to toggle selection */
+  .zh-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-all;cursor:pointer;border-radius:4px;padding:2px 4px;margin:-2px -4px;transition:background .12s;user-select:none}
+  .zh-cell:hover{background:#ede9fe}
+  .line-row.selected .zh-cell{color:var(--purple)}
+
   .khmer-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-word}
   .khmer-cell.pending{color:var(--text-muted);font-style:italic;font-size:.78rem}
   .khmer-cell.translating{color:var(--amber);font-style:italic;font-size:.78rem}
+
+  /* NOTE BADGES — 10 roles */
   .note-tag{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:20px;border:1px solid}
-  .note-tag.male{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
-  .note-tag.female{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
-  .note-tag.kid{background:#fefce8;color:#a16207;border-color:#fde047}
-  .note-tag.grandma{background:#fdf2f8;color:#be185d;border-color:#fbcfe8}
-  .note-tag.grandpa{background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe}
-  .note-tag.uncle{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
-  .note-tag.aunt{background:#fdf4ff;color:#9333ea;border-color:#d8b4fe}
-  .note-tag.other{background:var(--amber-light);color:var(--amber);border-color:#fde68a}
-  .action-cell{display:flex;flex-direction:row;gap:4px;align-items:center;flex-wrap:wrap}
+  .note-tag.male-lead{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+  .note-tag.male-a{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .note-tag.male-b{background:#e0f2fe;color:#0369a1;border-color:#7dd3fc}
+  .note-tag.female-lead{background:#fce7f3;color:#be185d;border-color:#f9a8d4}
+  .note-tag.female-a{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .note-tag.female-b{background:#fdf4ff;color:#9333ea;border-color:#d8b4fe}
+  .note-tag.colleague{background:#f0fdf4;color:#15803d;border-color:#86efac}
+  .note-tag.sister{background:#fff7ed;color:#c2410c;border-color:#fdba74}
+  .note-tag.brother{background:#f0fdfa;color:#0f766e;border-color:#5eead4}
+  .note-tag.mom{background:#fef9c3;color:#a16207;border-color:#fde047}
+  .note-tag.dad{background:#fefce8;color:#854d0e;border-color:#fef08a}
+
+  .action-cell{display:flex;flex-direction:row;gap:4px;align-items:center}
   .icon-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all .12s;flex-shrink:0}
   .icon-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
   .icon-btn:hover{background:var(--surface);color:var(--text)}
   .icon-btn.save-btn:hover{background:var(--green-light);color:var(--green)}
   .icon-btn.cancel-btn:hover{background:var(--red-light);color:var(--red)}
   .icon-btn.edit-btn:hover{background:var(--accent-light);color:var(--accent)}
-  .icon-btn.note-btn:hover{background:var(--purple-light);color:var(--purple)}
+
   .khmer-edit-input{width:100%;border:1px solid var(--accent);border-radius:4px;padding:5px 8px;font-size:.85rem;line-height:1.6;font-family:'DM Sans',sans-serif;outline:none;background:white;color:var(--text);resize:vertical;min-height:38px;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+
+  /* MODAL */
   .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
   .modal-overlay.open{opacity:1;pointer-events:all}
-  .modal{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);width:100%;max-width:480px;overflow:hidden;transform:translateY(12px);transition:transform .2s}
+  .modal{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);width:100%;max-width:520px;overflow:hidden;transform:translateY(12px);transition:transform .2s}
   .modal-overlay.open .modal{transform:translateY(0)}
   .modal-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
   .modal-title{font-size:.9rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
@@ -122,54 +151,57 @@
   .modal-close:hover{background:var(--surface);color:var(--text)}
   .modal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
   .modal-body{padding:18px 20px}
-  .modal-selected-lines{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:16px;max-height:120px;overflow-y:auto}
+  .modal-selected-lines{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:16px;max-height:100px;overflow-y:auto}
   .modal-selected-lines .sel-line-item{font-size:.75rem;color:var(--text-secondary);padding:2px 0;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid var(--border)}
   .modal-selected-lines .sel-line-item:last-child{border-bottom:none}
   .sel-line-ts{font-family:'DM Mono',monospace;color:var(--accent);font-size:.68rem;flex-shrink:0}
   .sel-line-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .form-label{font-size:.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block;letter-spacing:.04em}
-  .role-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:14px}
-  .role-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
+  .form-label{font-size:.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px;display:block;letter-spacing:.04em}
+
+  /* Role options grid — 10 roles, 2 cols */
+  .role-section-label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+  .role-options{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
+  .role-opt{border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
   .role-opt:hover{border-color:var(--border-hover);background:var(--surface)}
-  .role-opt.selected-male{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
-  .role-opt.selected-female{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
-  .role-opt.selected-kid{border-color:#fde047;background:#fefce8;color:#a16207}
-  .role-opt.selected-grandma{border-color:#f9a8d4;background:#fdf2f8;color:#be185d}
-  .role-opt.selected-grandpa{border-color:#93c5fd;background:#eff6ff;color:#1d4ed8}
-  .role-opt.selected-uncle{border-color:#86efac;background:#f0fdf4;color:#15803d}
-  .role-opt.selected-aunt{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
-  .role-opt.selected-other{border-color:#fde68a;background:var(--amber-light);color:var(--amber)}
-  .role-opt-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;flex-shrink:0}
-  .other-input-wrap{display:none;margin-top:10px}
-  .other-input-wrap.visible{display:block}
-  .other-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .15s}
-  .other-input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
-  .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+  .role-opt.sel-male-lead{border-color:#93c5fd;background:#dbeafe;color:#1d4ed8}
+  .role-opt.sel-male-a{border-color:#bfdbfe;background:#eff6ff;color:#2563eb}
+  .role-opt.sel-male-b{border-color:#7dd3fc;background:#e0f2fe;color:#0369a1}
+  .role-opt.sel-female-lead{border-color:#f9a8d4;background:#fce7f3;color:#be185d}
+  .role-opt.sel-female-a{border-color:#fbcfe8;background:#fdf2f8;color:#db2777}
+  .role-opt.sel-female-b{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
+  .role-opt.sel-colleague{border-color:#86efac;background:#f0fdf4;color:#15803d}
+  .role-opt.sel-sister{border-color:#fdba74;background:#fff7ed;color:#c2410c}
+  .role-opt.sel-brother{border-color:#5eead4;background:#f0fdfa;color:#0f766e}
+  .role-opt.sel-mom{border-color:#fde047;background:#fef9c3;color:#a16207}
+  .role-opt.sel-dad{border-color:#fef08a;background:#fefce8;color:#854d0e}
+  .role-opt-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;flex-shrink:0;letter-spacing:-.02em}
+
+  .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .modal-foot-right{display:flex;gap:8px}
+
+  .hint-strip{font-size:.72rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;margin-bottom:14px;display:flex;align-items:center;gap:6px}
+  .hint-strip svg{width:12px;height:12px;stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0}
+
   #toast{position:fixed;bottom:24px;right:24px;background:#111;color:#fff;padding:10px 18px;border-radius:8px;font-size:.78rem;font-weight:500;opacity:0;transform:translateY(8px);transition:all .2s;pointer-events:none;z-index:999;box-shadow:var(--shadow-lg)}
   #toast.show{opacity:1;transform:translateY(0)}
+
   .empty-state{text-align:center;padding:60px 32px;color:var(--text-muted)}
   .empty-icon{width:48px;height:48px;border:1.5px dashed var(--border);border-radius:12px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center}
   .empty-icon svg{width:22px;height:22px;stroke:var(--border);fill:none;stroke-width:1.5;stroke-linecap:round}
   .empty-title{font-size:.9rem;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
   .empty-desc{font-size:.78rem;line-height:1.6;max-width:300px;margin:0 auto}
+
   ::-webkit-scrollbar{width:6px;height:6px}
   ::-webkit-scrollbar-track{background:transparent}
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
   ::-webkit-scrollbar-thumb:hover{background:var(--border-hover)}
 
-  /* API STATUS BADGE */
-  .api-badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:20px;font-family:'DM Mono',monospace;margin-left:8px;border:1px solid}
-  .api-badge.google{background:#f0fdf4;color:#15803d;border-color:#86efac}
-  .api-badge.mymemory{background:#eff6ff;color:#2563eb;border-color:#93c5fd}
-  .api-badge.failed{background:var(--red-light);color:var(--red);border-color:#fecaca}
-
   @media(max-width:700px){
     header{padding:12px 14px;gap:8px}
     .header-stats{gap:10px;font-size:.68rem}
     main{padding:12px 14px}
-    .table-head{grid-template-columns:32px 56px 1fr 44px;padding:8px 12px;gap:8px}
+    .table-head{grid-template-columns:32px 52px 1fr 36px;padding:8px 12px;gap:8px}
     .table-head .th:nth-child(4){display:none}
-    .table-head .th:nth-child(5){text-align:left}
     .line-row{display:flex;flex-direction:column;padding:12px;gap:0;position:relative}
     .line-row.selected{border-left:3px solid var(--purple);padding-left:9px}
     .check-cell{position:absolute;top:14px;left:12px;width:20px}
@@ -177,9 +209,8 @@
     .zh-cell{font-size:.82rem;margin-left:28px;margin-bottom:6px;word-break:break-word}
     .khmer-cell{font-size:.82rem;margin-left:28px;padding-left:10px;border-left:2px solid var(--border);word-break:break-word;margin-bottom:4px}
     .khmer-cell.pending,.khmer-cell.translating{font-size:.75rem}
-    .action-cell{display:flex;flex-direction:row;gap:4px;margin-left:28px;margin-top:6px;flex-wrap:wrap}
+    .action-cell{display:flex;flex-direction:row;gap:4px;margin-left:28px;margin-top:6px}
     .icon-btn{width:32px;height:32px}
-    .line-row.editing{padding:12px}
     .mobile-edit-wrap{width:100%;margin-top:6px}
     .mobile-edit-label{font-size:.68rem;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
     .khmer-edit-input{min-height:60px;font-size:.82rem}
@@ -187,11 +218,10 @@
     .mobile-edit-actions .btn{flex:1;justify-content:center;padding:10px 8px;font-size:.8rem}
     .toolbar{gap:6px}
     .btn{padding:8px 12px;font-size:.78rem}
-    #selectionBanner{padding:8px 10px;gap:6px}
+    #selectionBanner{padding:8px 10px;gap:6px;top:56px}
     .sel-info{font-size:.72rem;gap:5px}
     .sel-actions{gap:4px}
-    .sel-actions .btn{padding:7px 6px;font-size:.7rem;gap:3px}
-    .sel-actions .btn svg{display:none}
+    .sel-actions .btn{padding:7px 8px;font-size:.7rem}
     .role-options{grid-template-columns:1fr 1fr}
   }
 </style>
@@ -225,7 +255,7 @@
         <button class="btn btn-ghost" style="font-size:.75rem;padding:5px 10px" onclick="clearInput()">Clear</button>
       </div>
     </div>
-    <textarea id="inputText" placeholder="Paste your subtitle text here... e.g. (0:05) Hello world" rows="5" oninput="handleInput()"></textarea>
+    <textarea id="inputText" placeholder="Paste your subtitle text here..." rows="5" oninput="handleInput()"></textarea>
     <div id="parsePreview">
       <div class="parse-title">
         <svg viewBox="0 0 24 24" width="11" height="11" style="stroke:var(--text-muted);fill:none;stroke-width:2;stroke-linecap:round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
@@ -240,7 +270,6 @@
       <svg viewBox="0 0 24 24"><path d="M5 8l4 4-4 4M13 12h6"/></svg>
       Translate All
     </button>
-    <div class="toolbar-sep"></div>
     <div class="toolbar-sep" id="sep2" style="display:none"></div>
     <button class="btn btn-outline" onclick="copyKhmerOnly()" id="copyKhBtn" style="display:none">
       <svg viewBox="0 0 24 24"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.2L14.8 2H10a2 2 0 0 0-2 2z"/><path d="M14 2v5h5M4 8H2v12a2 2 0 0 0 2 2h10"/></svg>
@@ -256,34 +285,37 @@
     </button>
   </div>
 
+  <!-- PROGRESS -->
   <div id="progressWrap">
     <div class="progress-top">
       <div class="progress-label" id="progressLabel">Translating...</div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span class="api-badge" id="apiBadge" style="display:none"></span>
-        <span class="progress-count" id="progressCount">0 / 0</span>
-      </div>
+      <div class="progress-count" id="progressCount">0 / 0</div>
     </div>
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
   </div>
 
-  <div id="selectionBanner" style="display:none;position:sticky;top:68px;z-index:90;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 8px rgba(124,58,237,.12);">
+  <!-- SELECTION BANNER — appears when any row is selected -->
+  <div id="selectionBanner">
     <div class="sel-info">
       <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0"><path d="M9 11l3 3L22 4"/></svg>
       <span id="selCountText" style="white-space:nowrap">0 rows selected</span>
       <span class="sel-count-badge" id="selCountBadge">0</span>
     </div>
     <div class="sel-actions">
-      <button class="btn btn-outline" onclick="selectAll()">Select All</button>
-      <button class="btn btn-outline" onclick="clearSelection()">Deselect All</button>
-      <button class="btn btn-purple" id="addNoteBtn" onclick="openNoteModal()" disabled>
+      <button class="btn btn-outline" onclick="selectAll()">All</button>
+      <button class="btn btn-outline" onclick="clearSelection()">Clear</button>
+      <button class="btn btn-purple" id="bulkRoleBtn" onclick="openBulkRoleModal()" disabled>
         <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        Add Note
+        Tag Role
       </button>
-      <button class="btn btn-ghost" onclick="toggleSelectMode()">Cancel</button>
+      <button class="btn btn-danger" id="bulkClearRoleBtn" onclick="bulkClearRole()" disabled>
+        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        Clear Role
+      </button>
     </div>
   </div>
 
+  <!-- RESULTS TABLE -->
   <div id="resultWrap">
     <div class="result-header">
       <div class="result-title">
@@ -291,13 +323,17 @@
         <span class="result-badge" id="lineCountBadge">0 lines</span>
       </div>
     </div>
+    <div class="hint-strip" id="hintStrip" style="display:none">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      Click any Chinese line to select/deselect it. Select one or more rows, then tap Tag Role in the banner above.
+    </div>
     <div class="table-wrap">
       <div class="table-head">
-        <div class="th" id="thCheck"></div>
+        <div class="th"></div>
         <div class="th">Time</div>
-        <div class="th">Chinese</div>
+        <div class="th">Chinese (click to select)</div>
         <div class="th">Khmer</div>
-        <div class="th center">Actions</div>
+        <div class="th center">Edit</div>
       </div>
       <div id="linesContainer">
         <div class="empty-state">
@@ -310,15 +346,15 @@
   </div>
 </main>
 
-<!-- NOTE MODAL -->
-<div class="modal-overlay" id="noteModal">
+<!-- ROLE MODAL -->
+<div class="modal-overlay" id="roleModal">
   <div class="modal">
     <div class="modal-head">
       <div class="modal-title">
         <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        Add Character Note
+        <span id="modalTitleText">Tag Speaker Role</span>
       </div>
-      <button class="modal-close" onclick="closeNoteModal()">
+      <button class="modal-close" onclick="closeRoleModal()">
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
@@ -329,27 +365,78 @@
       </div>
       <div>
         <div class="form-label">Speaker Role</div>
+
+        <div class="role-section-label">តួប្រុស</div>
         <div class="role-options">
-          <div class="role-opt" id="gOpt-male" onclick="selectGender('male')"><div class="role-opt-icon" style="background:#dbeafe;color:#2563eb">M</div><span>Male</span></div>
-          <div class="role-opt" id="gOpt-female" onclick="selectGender('female')"><div class="role-opt-icon" style="background:#fce7f3;color:#db2777">F</div><span>Female</span></div>
-          <div class="role-opt" id="gOpt-kid" onclick="selectGender('kid')"><div class="role-opt-icon" style="background:#fef9c3;color:#a16207">K</div><span>Kid</span></div>
-          <div class="role-opt" id="gOpt-grandma" onclick="selectGender('grandma')"><div class="role-opt-icon" style="background:#fce7f3;color:#be185d">GM</div><span>Grandma</span></div>
-          <div class="role-opt" id="gOpt-grandpa" onclick="selectGender('grandpa')"><div class="role-opt-icon" style="background:#dbeafe;color:#1d4ed8">GP</div><span>Grandpa</span></div>
-          <div class="role-opt" id="gOpt-uncle" onclick="selectGender('uncle')"><div class="role-opt-icon" style="background:#dcfce7;color:#15803d">U</div><span>Uncle</span></div>
-          <div class="role-opt" id="gOpt-aunt" onclick="selectGender('aunt')"><div class="role-opt-icon" style="background:#fdf4ff;color:#9333ea">A</div><span>Aunt</span></div>
-          <div class="role-opt" id="gOpt-other" onclick="selectGender('other')"><div class="role-opt-icon" style="background:#fef3c7;color:#d97706">?</div><span>Other</span></div>
+          <div class="role-opt" id="gOpt-male-lead" onclick="selectRole('male-lead')">
+            <div class="role-opt-icon" style="background:#dbeafe;color:#1d4ed8">T.P</div>
+            <span>តួរប្រុស</span>
+          </div>
+          <div class="role-opt" id="gOpt-male-a" onclick="selectRole('male-a')">
+            <div class="role-opt-icon" style="background:#eff6ff;color:#2563eb">PA</div>
+            <span>ប្រុស A</span>
+          </div>
+          <div class="role-opt" id="gOpt-male-b" onclick="selectRole('male-b')">
+            <div class="role-opt-icon" style="background:#e0f2fe;color:#0369a1">PB</div>
+            <span>ប្រុស B</span>
+          </div>
+          <div class="role-opt" id="gOpt-brother" onclick="selectRole('brother')">
+            <div class="role-opt-icon" style="background:#f0fdfa;color:#0f766e">BP</div>
+            <span>ប្អូនប្រុស</span>
+          </div>
+          <div class="role-opt" id="gOpt-dad" onclick="selectRole('dad')">
+            <div class="role-opt-icon" style="background:#fefce8;color:#854d0e">P</div>
+            <span>ប៉ា</span>
+          </div>
         </div>
-        <div class="other-input-wrap" id="otherInputWrap">
-          <input type="text" class="other-input" id="otherLabelInput" placeholder="Describe this role (e.g. Narrator, Boss)" maxlength="40"/>
+
+        <div class="role-section-label">តួស្រី</div>
+        <div class="role-options">
+          <div class="role-opt" id="gOpt-female-lead" onclick="selectRole('female-lead')">
+            <div class="role-opt-icon" style="background:#fce7f3;color:#be185d">T.S</div>
+            <span>តួរស្រី</span>
+          </div>
+          <div class="role-opt" id="gOpt-female-a" onclick="selectRole('female-a')">
+            <div class="role-opt-icon" style="background:#fdf2f8;color:#db2777">SA</div>
+            <span>ស្រី A</span>
+          </div>
+          <div class="role-opt" id="gOpt-female-b" onclick="selectRole('female-b')">
+            <div class="role-opt-icon" style="background:#fdf4ff;color:#9333ea">SB</div>
+            <span>ស្រី B</span>
+          </div>
+          <div class="role-opt" id="gOpt-sister" onclick="selectRole('sister')">
+            <div class="role-opt-icon" style="background:#fff7ed;color:#c2410c">BS</div>
+            <span>ប្អូនស្រី</span>
+          </div>
+          <div class="role-opt" id="gOpt-mom" onclick="selectRole('mom')">
+            <div class="role-opt-icon" style="background:#fef9c3;color:#a16207">M</div>
+            <span>ម៉ាក់</span>
+          </div>
+        </div>
+
+        <div class="role-section-label">ផ្សេងៗ</div>
+        <div class="role-options" style="grid-template-columns:1fr">
+          <div class="role-opt" id="gOpt-colleague" onclick="selectRole('colleague')">
+            <div class="role-opt-icon" style="background:#f0fdf4;color:#15803d">MK</div>
+            <span>មិត្តរួមការងារ</span>
+          </div>
         </div>
       </div>
     </div>
     <div class="modal-foot">
-      <button class="btn btn-ghost" onclick="closeNoteModal()">Cancel</button>
-      <button class="btn btn-purple" onclick="saveNote()">
-        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-        Save Note
-      </button>
+      <div>
+        <button class="btn btn-danger" id="removeRoleBtn" onclick="removeRoleFromModal()" style="display:none">
+          <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+          Remove Role
+        </button>
+      </div>
+      <div class="modal-foot-right">
+        <button class="btn btn-ghost" onclick="closeRoleModal()">Cancel</button>
+        <button class="btn btn-purple" onclick="saveRole()">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Save
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -360,105 +447,48 @@
   let parsedLines = [];
   let translatedData = [];
   let isTranslating = false;
-  let isSelectMode = false;
   let selectedRows = new Set();
-  let notes = [];
-  let editingNoteIdx = null;
-  let modalGender = '';
 
-  const ALL_ROLES = ['male','female','kid','grandma','grandpa','uncle','aunt','other'];
+  // Modal state
+  let modalIndices = [];
+  let modalRole = '';
+  let modalMode = 'single';
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // TRANSLATION ENGINE
-  // Primary  : Google Translate unofficial endpoint (no key, CORS-friendly)
-  // Fallback : MyMemory free API (2000 words/day, zh|km supported)
-  // ─────────────────────────────────────────────────────────────────────────────
+  const ALL_ROLES = [
+    'male-lead','male-a','male-b','female-lead','female-a','female-b',
+    'colleague','sister','brother','mom','dad'
+  ];
 
-  async function translateZhToKm(text) {
-    if (!text || !text.trim()) return '';
+  const ROLE_LABELS = {
+    'male-lead': 'តួរប្រុស',
+    'male-a':    'ប្រុស A',
+    'male-b':    'ប្រុស B',
+    'female-lead':'តួរស្រី',
+    'female-a':  'ស្រី A',
+    'female-b':  'ស្រី B',
+    'colleague': 'មិត្តរួមការងារ',
+    'sister':    'ប្អូនស្រី',
+    'brother':   'ប្អូនប្រុស',
+    'mom':       'ម៉ាក់',
+    'dad':       'ប៉ា'
+  };
 
-    // ── 1. Google Translate (unofficial translate_a endpoint) ──────────────────
-    try {
-      const url = 'https://translate.googleapis.com/translate_a/single'
-        + '?client=gtx'
-        + '&sl=zh-CN'
-        + '&tl=km'
-        + '&dt=t'
-        + '&q=' + encodeURIComponent(text);
-
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('Google HTTP ' + res.status);
-
-      const json = await res.json();
-      // Response shape: [ [ ["translated","original",...], ... ], ... ]
-      if (Array.isArray(json) && Array.isArray(json[0])) {
-        const translated = json[0]
-          .filter(seg => seg && seg[0])
-          .map(seg => seg[0])
-          .join('');
-        if (translated && translated.trim()) {
-          showApiBadge('google');
-          return translated.trim();
-        }
-      }
-      throw new Error('Google returned empty result');
-    } catch (e) {
-      console.warn('[Google Translate] failed:', e.message);
-    }
-
-    // ── 2. MyMemory (free, 2000 words/day, no key needed) ─────────────────────
-    try {
-      const url = 'https://api.mymemory.translated.net/get'
-        + '?q=' + encodeURIComponent(text)
-        + '&langpair=zh%7Ckm';
-
-      const res = await fetch(url);
-      if (!res.ok) throw new Error('MyMemory HTTP ' + res.status);
-
-      const json = await res.json();
-      const t = json && json.responseData && json.responseData.translatedText;
-      if (t && t.trim() && t.toLowerCase() !== text.toLowerCase()) {
-        showApiBadge('mymemory');
-        return t.trim();
-      }
-      throw new Error('MyMemory returned empty / identical result');
-    } catch (e) {
-      console.warn('[MyMemory] failed:', e.message);
-    }
-
-    // ── All engines exhausted ─────────────────────────────────────────────────
-    showApiBadge('failed');
-    return '[Translation unavailable]';
+  function roleLabel(role) {
+    return ROLE_LABELS[role] || role || '';
   }
 
-  function showApiBadge(type) {
-    const badge = document.getElementById('apiBadge');
-    badge.style.display = 'inline-flex';
-    if (type === 'google') {
-      badge.className = 'api-badge google';
-      badge.textContent = 'via Google';
-    } else if (type === 'mymemory') {
-      badge.className = 'api-badge mymemory';
-      badge.textContent = 'via MyMemory';
-    } else {
-      badge.className = 'api-badge failed';
-      badge.textContent = 'API failed';
-    }
+  function roleSectionLabel(role) {
+    return '[' + roleLabel(role) + ']';
   }
 
-  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-  // ─────────────────────────────────────────────────────────────────────────────
-  // PARSE
-  // ─────────────────────────────────────────────────────────────────────────────
+  // ── PARSE ─────────────────────────────────────────────────
   function parseSubtitleText(raw) {
     const pattern = /\((\d{1,2}:\d{2})\)\s*([\s\S]*?)(?=\(\d{1,2}:\d{2}\)|$)/g;
     const results = [];
-    let match;
-    while ((match = pattern.exec(raw)) !== null) {
-      const ts = match[1].trim();
-      const text = match[2].trim();
-      if (ts && text) results.push({ ts, zh: text, km: '', status: 'pending' });
+    let m;
+    while ((m = pattern.exec(raw)) !== null) {
+      const ts = m[1].trim(), text = m[2].trim();
+      if (ts && text) results.push({ ts, zh: text, km: '', status: 'pending', role: null });
     }
     return results;
   }
@@ -471,161 +501,182 @@
     if (!raw) { preview.style.display='none'; parsedLines=[]; btn.disabled=true; return; }
     parsedLines = parseSubtitleText(raw);
     if (!parsedLines.length) { preview.style.display='none'; btn.disabled=true; return; }
-    preview.style.display = 'block';
-    chips.innerHTML = '';
+    preview.style.display='block';
+    chips.innerHTML='';
     const max = 8;
     parsedLines.slice(0, max).forEach(l => {
-      const c = document.createElement('div'); c.className = 'parse-chip';
-      c.innerHTML = `<span class="ts">(${l.ts})</span>${escHtml(l.zh)}`; chips.appendChild(c);
+      const c = document.createElement('div'); c.className='parse-chip';
+      c.innerHTML=`<span class="ts">(${l.ts})</span>${escHtml(l.zh)}`; chips.appendChild(c);
     });
     if (parsedLines.length > max) {
-      const m = document.createElement('div'); m.className = 'parse-more';
-      m.textContent = `+${parsedLines.length - max} more`; chips.appendChild(m);
+      const m2 = document.createElement('div'); m2.className='parse-more';
+      m2.textContent=`+${parsedLines.length-max} more`; chips.appendChild(m2);
     }
     btn.disabled = false;
   }
 
   function clearInput() {
-    document.getElementById('inputText').value = '';
-    document.getElementById('parsePreview').style.display = 'none';
-    parsedLines = [];
-    document.getElementById('translateBtn').disabled = true;
+    document.getElementById('inputText').value='';
+    document.getElementById('parsePreview').style.display='none';
+    parsedLines=[];
+    document.getElementById('translateBtn').disabled=true;
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // TRANSLATION PIPELINE
-  // ─────────────────────────────────────────────────────────────────────────────
+  // ── TRANSLATION ───────────────────────────────────────────
+  async function translateZhToKm(text) {
+    if (!text || !text.trim()) return '[Translation unavailable]';
+    try {
+      const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=zh-CN&tl=km&dt=t&q=${encodeURIComponent(text)}`;
+      const r = await fetch(url);
+      if (r.ok) {
+        const data = await r.json();
+        const result = data[0]?.map(s => s?.[0] || '').join('') || '';
+        if (result && result !== text) return result;
+      }
+    } catch(e) { console.error('Google Translate error:', e); }
+    try {
+      const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=zh|km`;
+      const r = await fetch(url);
+      if (r.ok) {
+        const data = await r.json();
+        const t = data?.responseData?.translatedText;
+        if (t && t !== text) return t;
+      }
+    } catch(e) { console.error('MyMemory error:', e); }
+    return '[Translation unavailable]';
+  }
+
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
   async function startTranslation() {
     if (isTranslating || !parsedLines.length) return;
     isTranslating = true;
-    translatedData = parsedLines.map(l => ({ ...l, km: '', status: 'pending', noteIdx: null }));
-    document.getElementById('resultWrap').style.display = 'block';
-    document.getElementById('headerStats').style.display = 'flex';
-    document.getElementById('progressWrap').style.display = 'block';
-    document.getElementById('translateBtn').disabled = true;
-    document.getElementById('apiBadge').style.display = 'none';
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display = 'none');
-    document.getElementById('sep2').style.display = 'none';
-    // Reset progress bar color
-    document.getElementById('progressFill').style.background = 'var(--accent)';
-    document.getElementById('progressLabel').style.color = 'var(--text-secondary)';
+    selectedRows.clear();
+    translatedData = parsedLines.map(l => ({...l, km:'', status:'pending', role:null}));
+    document.getElementById('resultWrap').style.display='block';
+    document.getElementById('hintStrip').style.display='flex';
+    document.getElementById('headerStats').style.display='flex';
+    document.getElementById('progressWrap').style.display='block';
+    document.getElementById('selectionBanner').style.display='none';
+    document.getElementById('translateBtn').disabled=true;
+    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='none');
+    document.getElementById('sep2').style.display='none';
     renderTable();
     updateHeaderStats();
     const total = translatedData.length;
-    document.getElementById('lineCountBadge').textContent = `${total} lines`;
-
-    for (let i = 0; i < total; i++) {
-      translatedData[i].status = 'translating';
-      renderRow(i);
-      updateProgress(i, total, `Translating line ${i + 1} of ${total}...`);
+    document.getElementById('lineCountBadge').textContent=`${total} lines`;
+    for (let i=0; i<total; i++) {
+      translatedData[i].status='translating'; renderRow(i);
+      updateProgress(i, total, `Translating line ${i+1} of ${total}...`);
       const km = await translateZhToKm(translatedData[i].zh);
       translatedData[i].km = km;
       translatedData[i].status = km.includes('[Translation') ? 'error' : 'done';
-      renderRow(i);
-      updateHeaderStats();
-      // Small delay to avoid rate-limiting (300ms between requests)
-      if (i < total - 1) await sleep(300);
+      renderRow(i); updateHeaderStats();
+      if (i < total-1) await sleep(300);
     }
-
     isTranslating = false;
     updateProgress(total, total, 'Translation complete');
-    document.getElementById('progressFill').style.background = 'var(--green)';
-    document.getElementById('progressLabel').style.color = 'var(--green)';
-    document.getElementById('translateBtn').disabled = false;
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => { document.getElementById(id).style.display = 'inline-flex'; });
-    document.getElementById('sep2').style.display = 'block';
-    showToast('Translation complete — click any Khmer cell to select rows');
+    document.getElementById('progressFill').style.background='var(--green)';
+    document.getElementById('progressLabel').style.color='var(--green)';
+    document.getElementById('translateBtn').disabled=false;
+    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='inline-flex');
+    document.getElementById('sep2').style.display='block';
+    showToast('Done — click any Chinese line to select it, then Tag Role');
   }
 
   function updateProgress(done, total, label) {
-    document.getElementById('progressLabel').textContent = label;
-    document.getElementById('progressCount').textContent = `${done} / ${total}`;
-    document.getElementById('progressFill').style.width = `${total ? (done / total * 100) : 0}%`;
+    document.getElementById('progressLabel').textContent=label;
+    document.getElementById('progressCount').textContent=`${done} / ${total}`;
+    document.getElementById('progressFill').style.width=`${total ? (done/total*100) : 0}%`;
   }
 
   function updateHeaderStats() {
-    const total = translatedData.length;
-    const done = translatedData.filter(l => l.status === 'done' || l.status === 'error').length;
-    document.getElementById('statTotal').textContent = total + ' lines';
-    document.getElementById('statDone').textContent = done + ' done';
-    document.getElementById('statPending').textContent = (total - done) + ' pending';
+    const total=translatedData.length;
+    const done=translatedData.filter(l=>l.status==='done'||l.status==='error').length;
+    document.getElementById('statTotal').textContent=total+' lines';
+    document.getElementById('statDone').textContent=done+' done';
+    document.getElementById('statPending').textContent=(total-done)+' pending';
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // RENDER
-  // ─────────────────────────────────────────────────────────────────────────────
+  // ── RENDER ────────────────────────────────────────────────
   function renderTable() {
-    const c = document.getElementById('linesContainer'); c.innerHTML = '';
-    translatedData.forEach((_, i) => { c.appendChild(createRowEl(i)); });
+    const c = document.getElementById('linesContainer'); c.innerHTML='';
+    translatedData.forEach((_, i) => c.appendChild(createRowEl(i)));
   }
 
   function createRowEl(i) {
     const row = document.createElement('div');
-    row.className = 'line-row' + (isSelectMode ? ' select-mode' : '') + (selectedRows.has(i) ? ' selected' : '');
-    row.id = `row-${i}`;
+    row.id=`row-${i}`;
+    const isSelected = selectedRows.has(i);
+    row.className='line-row' + (isSelected?' selected':'');
+    if (translatedData[i].status==='error') row.classList.add('error-row');
     row.innerHTML = buildRowHTML(i);
-    if (isSelectMode) row.onclick = (e) => { if (!e.target.closest('.icon-btn') && !e.target.closest('.row-checkbox')) toggleRowSelect(i); };
     return row;
   }
 
   function buildRowHTML(i) {
     const l = translatedData[i];
     const isSelected = selectedRows.has(i);
-    const checkHTML = `<div class="check-cell"><input type="checkbox" class="row-checkbox" ${isSelected ? 'checked' : ''} onchange="onCheckChange(${i},this.checked)" onclick="event.stopPropagation()"/></div>`;
+
+    const checkHTML = `<div class="check-cell">
+      <input type="checkbox" class="row-checkbox" ${isSelected?'checked':''}
+        onchange="onCheckChange(${i},this.checked)" onclick="event.stopPropagation()"/>
+    </div>`;
+
+    // zh-cell always toggles selection on click
+    const isDone = l.status==='done' || l.status==='error';
+    const zhClickAttr = isDone
+      ? `onclick="toggleRowSelect(${i});event.stopPropagation()" title="Click to select"`
+      : `title="Waiting for translation"`;
+    const zhCell = `<div class="zh-cell" ${zhClickAttr}>${escHtml(l.zh)}</div>`;
 
     let kmContent = '';
-    if (l.status === 'pending') kmContent = `<div class="khmer-cell pending">Waiting...</div>`;
-    else if (l.status === 'translating') kmContent = `<div class="khmer-cell translating">Translating...</div>`;
-    else {
-      let noteTagHTML = '';
-      if (l.noteIdx !== null && l.noteIdx !== undefined && notes[l.noteIdx]) {
-        const n = notes[l.noteIdx];
-        noteTagHTML = `<div class="note-tag ${n.gender}">${roleShort(n)}</div>`;
+    if (l.status==='pending') {
+      kmContent = `<div class="khmer-cell pending">Waiting...</div>`;
+    } else if (l.status==='translating') {
+      kmContent = `<div class="khmer-cell translating">Translating...</div>`;
+    } else {
+      let badge = '';
+      if (l.role) {
+        badge = `<div class="note-tag ${l.role}">${roleLabel(l.role)}</div>`;
       }
-      kmContent = `<div class="khmer-cell" style="cursor:pointer" onclick="khmerCellClick(${i});event.stopPropagation()" title="Click to select">${escHtml(l.km)}${noteTagHTML}</div>`;
+      kmContent = `<div class="khmer-cell">${escHtml(l.km)}${badge}</div>`;
     }
 
     let actions = '<div class="action-cell"></div>';
-    if (l.status === 'done' || l.status === 'error') {
+    if (isDone) {
       actions = `<div class="action-cell">
-        <button class="icon-btn edit-btn" onclick="startEdit(${i});event.stopPropagation()" title="Edit">
+        <button class="icon-btn edit-btn" onclick="startEdit(${i});event.stopPropagation()" title="Edit Khmer">
           <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        </button>
-        <button class="icon-btn note-btn" onclick="quickNote(${i});event.stopPropagation()" title="Add Note">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="12" y1="17" x2="8" y2="17"/></svg>
         </button>
       </div>`;
     }
-    return `${checkHTML}<div class="ts-cell">(${escHtml(l.ts)})</div><div class="zh-cell">${escHtml(l.zh)}</div>${kmContent}${actions}`;
+
+    return `${checkHTML}<div class="ts-cell">(${escHtml(l.ts)})</div>${zhCell}${kmContent}${actions}`;
   }
 
   function renderRow(i) {
-    const row = document.getElementById(`row-${i}`);
-    if (!row) {
+    const existing = document.getElementById(`row-${i}`);
+    if (!existing) {
       const c = document.getElementById('linesContainer');
-      if (c.querySelector('.empty-state')) c.innerHTML = '';
+      if (c.querySelector('.empty-state')) c.innerHTML='';
       c.appendChild(createRowEl(i));
     } else {
-      row.className = 'line-row' + (isSelectMode ? ' select-mode' : '') + (selectedRows.has(i) ? ' selected' : '');
-      if (translatedData[i].status === 'error') row.classList.add('error-row');
-      row.innerHTML = buildRowHTML(i);
-      if (isSelectMode) row.onclick = (e) => { if (!e.target.closest('.icon-btn') && !e.target.closest('.row-checkbox')) toggleRowSelect(i); };
+      existing.replaceWith(createRowEl(i));
     }
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // EDIT
-  // ─────────────────────────────────────────────────────────────────────────────
+  // ── EDIT ─────────────────────────────────────────────────
   function startEdit(i) {
     const row = document.getElementById(`row-${i}`);
     row.classList.add('editing');
     const l = translatedData[i];
     const isMobile = window.innerWidth <= 700;
     if (isMobile) {
-      row.innerHTML = `
+      row.innerHTML=`
         <div class="check-cell"></div>
         <div class="ts-cell">(${escHtml(l.ts)})</div>
-        <div class="zh-cell">${escHtml(l.zh)}</div>
+        <div class="zh-cell" style="cursor:default">${escHtml(l.zh)}</div>
         <div class="mobile-edit-wrap">
           <div class="mobile-edit-label">Khmer Translation</div>
           <textarea class="khmer-edit-input" id="edit-input-${i}">${escHtml(l.km)}</textarea>
@@ -636,10 +687,10 @@
         </div>
         <div class="action-cell"></div>`;
     } else {
-      row.innerHTML = `
+      row.innerHTML=`
         <div class="check-cell"></div>
         <div class="ts-cell">(${escHtml(l.ts)})</div>
-        <div class="zh-cell">${escHtml(l.zh)}</div>
+        <div class="zh-cell" style="cursor:default">${escHtml(l.zh)}</div>
         <div><textarea class="khmer-edit-input" id="edit-input-${i}" rows="2">${escHtml(l.km)}</textarea></div>
         <div class="action-cell">
           <button class="icon-btn save-btn" onclick="saveEdit(${i});event.stopPropagation()" title="Save">
@@ -653,7 +704,10 @@
     const inp = document.getElementById(`edit-input-${i}`);
     if (inp) {
       inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length);
-      inp.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') saveEdit(i); if (e.key === 'Escape') cancelEdit(i); });
+      inp.addEventListener('keydown', e => {
+        if ((e.ctrlKey||e.metaKey) && e.key==='Enter') saveEdit(i);
+        if (e.key==='Escape') cancelEdit(i);
+      });
     }
   }
 
@@ -667,164 +721,130 @@
 
   function cancelEdit(i) { renderRow(i); }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // SELECT MODE
-  // ─────────────────────────────────────────────────────────────────────────────
-  function toggleSelectMode() {
-    isSelectMode = !isSelectMode;
-    selectedRows.clear();
-    const banner = document.getElementById('selectionBanner');
-    banner.style.display = isSelectMode ? 'flex' : 'none';
-    translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionUI();
-  }
-
-  function khmerCellClick(i) {
-    if (!isSelectMode) {
-      isSelectMode = true;
-      document.getElementById('selectionBanner').style.display = 'flex';
-    }
-    if (selectedRows.has(i)) selectedRows.delete(i); else selectedRows.add(i);
-    translatedData.forEach((_, j) => renderRow(j));
-    updateSelectionUI();
-  }
-
+  // ── SELECTION (always-on — no separate mode toggle needed) ─
   function toggleRowSelect(i) {
-    if (!isSelectMode) return;
+    const l = translatedData[i];
+    if (l.status !== 'done' && l.status !== 'error') return;
     if (selectedRows.has(i)) selectedRows.delete(i); else selectedRows.add(i);
-    renderRow(i); updateSelectionUI();
+    renderRow(i);
+    updateSelectionBanner();
   }
 
   function onCheckChange(i, checked) {
     if (checked) selectedRows.add(i); else selectedRows.delete(i);
-    renderRow(i); updateSelectionUI();
+    renderRow(i);
+    updateSelectionBanner();
   }
 
-  function updateSelectionUI() {
+  function updateSelectionBanner() {
     const n = selectedRows.size;
-    document.getElementById('selCountText').textContent = `${n} row${n !== 1 ? 's' : ''} selected`;
-    document.getElementById('selCountBadge').textContent = n;
-    document.getElementById('addNoteBtn').disabled = n === 0;
+    const banner = document.getElementById('selectionBanner');
+    if (n > 0) {
+      banner.style.display='flex';
+    } else {
+      banner.style.display='none';
+    }
+    document.getElementById('selCountText').textContent=`${n} row${n!==1?'s':''} selected`;
+    document.getElementById('selCountBadge').textContent=n;
+    document.getElementById('bulkRoleBtn').disabled=n===0;
+    document.getElementById('bulkClearRoleBtn').disabled=n===0;
   }
 
   function selectAll() {
-    translatedData.forEach((_, i) => { if (translatedData[i].status === 'done' || translatedData[i].status === 'error') selectedRows.add(i); });
-    translatedData.forEach((_, i) => renderRow(i)); updateSelectionUI();
+    translatedData.forEach((l, i) => { if (l.status==='done'||l.status==='error') selectedRows.add(i); });
+    translatedData.forEach((_, i) => renderRow(i));
+    updateSelectionBanner();
   }
 
   function clearSelection() {
     selectedRows.clear();
-    translatedData.forEach((_, i) => renderRow(i)); updateSelectionUI();
+    translatedData.forEach((_, i) => renderRow(i));
+    updateSelectionBanner();
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // NOTES
-  // ─────────────────────────────────────────────────────────────────────────────
-  function quickNote(i) {
-    if (!isSelectMode) {
-      isSelectMode = true;
-      document.getElementById('selectionBanner').style.display = 'flex';
-      translatedData.forEach((_, j) => renderRow(j));
-    }
-    selectedRows.clear(); selectedRows.add(i);
-    translatedData.forEach((_, j) => renderRow(j));
-    updateSelectionUI(); openNoteModal();
+  function bulkClearRole() {
+    selectedRows.forEach(i => { translatedData[i].role=null; });
+    selectedRows.clear();
+    translatedData.forEach((_, i) => renderRow(i));
+    updateSelectionBanner();
+    showToast('Roles removed from selected rows');
   }
 
-  function openNoteModal() {
+  // ── ROLE MODAL ────────────────────────────────────────────
+  function openBulkRoleModal() {
     if (!selectedRows.size) { showToast('Select at least one row'); return; }
-    editingNoteIdx = null; modalGender = '';
-    ALL_ROLES.forEach(g => { const el = document.getElementById(`gOpt-${g}`); if (el) el.className = 'role-opt'; });
-    document.getElementById('otherInputWrap').classList.remove('visible');
-    document.getElementById('otherLabelInput').value = '';
-    const container = document.getElementById('modalSelectedLines'); container.innerHTML = '';
-    [...selectedRows].sort((a, b) => a - b).forEach(i => {
+    modalIndices = [...selectedRows].sort((a,b)=>a-b);
+    modalMode = modalIndices.length === 1 ? 'single' : 'multi';
+    modalRole = modalIndices.length === 1 ? (translatedData[modalIndices[0]].role || '') : '';
+    document.getElementById('modalTitleText').textContent =
+      modalIndices.length === 1 ? 'Tag Speaker Role' : `Tag Role — ${modalIndices.length} rows`;
+    populateModalLines(modalIndices);
+    prefillRole(modalRole);
+    const showRemove = modalIndices.length === 1 && !!translatedData[modalIndices[0]].role;
+    document.getElementById('removeRoleBtn').style.display = showRemove ? 'inline-flex' : 'none';
+    document.getElementById('roleModal').classList.add('open');
+  }
+
+  function populateModalLines(indices) {
+    const container = document.getElementById('modalSelectedLines'); container.innerHTML='';
+    indices.forEach(i => {
       const l = translatedData[i];
-      const div = document.createElement('div'); div.className = 'sel-line-item';
-      div.innerHTML = `<span class="sel-line-ts">(${escHtml(l.ts)})</span><span class="sel-line-text">${escHtml(l.zh)}</span>`;
+      const div = document.createElement('div'); div.className='sel-line-item';
+      div.innerHTML=`<span class="sel-line-ts">(${escHtml(l.ts)})</span><span class="sel-line-text">${escHtml(l.zh)}</span>`;
       container.appendChild(div);
     });
-    document.getElementById('noteModal').classList.add('open');
   }
 
-  function closeNoteModal() { document.getElementById('noteModal').classList.remove('open'); editingNoteIdx = null; }
+  function prefillRole(role) {
+    modalRole = role || '';
+    ALL_ROLES.forEach(r => {
+      const el = document.getElementById(`gOpt-${r}`); if (!el) return;
+      el.className = 'role-opt' + (r===role ? ` sel-${r}` : '');
+    });
+  }
 
-  function selectGender(g) {
-    modalGender = g;
+  function selectRole(r) {
+    modalRole = r;
     ALL_ROLES.forEach(opt => {
       const el = document.getElementById(`gOpt-${opt}`); if (!el) return;
-      el.className = 'role-opt';
-      if (opt === g) el.classList.add(`selected-${opt}`);
+      el.className = 'role-opt' + (opt===r ? ` sel-${opt}` : '');
     });
-    const wrap = document.getElementById('otherInputWrap');
-    if (g === 'other') { wrap.classList.add('visible'); document.getElementById('otherLabelInput').focus(); }
-    else { wrap.classList.remove('visible'); }
   }
 
-  function saveNote() {
-    if (!modalGender) { showToast('Please select a role'); return; }
-    let otherLabel = '';
-    if (modalGender === 'other') {
-      otherLabel = document.getElementById('otherLabelInput').value.trim();
-      if (!otherLabel) { showToast('Please describe the role'); return; }
-    }
-    const indices = [...selectedRows].sort((a, b) => a - b);
-    const noteObj = { gender: modalGender, otherLabel, text: '', indices: [...indices], timestamps: indices.map(i => translatedData[i].ts) };
-    if (editingNoteIdx !== null) {
-      notes[editingNoteIdx].indices.forEach(i => { if (translatedData[i]) translatedData[i].noteIdx = null; });
-      notes[editingNoteIdx] = noteObj;
-      indices.forEach(i => { if (translatedData[i]) translatedData[i].noteIdx = editingNoteIdx; });
-    } else {
-      const nIdx = notes.length;
-      notes.push(noteObj);
-      indices.forEach(i => { if (translatedData[i]) translatedData[i].noteIdx = nIdx; });
-    }
-    closeNoteModal();
-    isSelectMode = false; selectedRows.clear();
-    document.getElementById('selectionBanner').style.display = 'none';
+  function saveRole() {
+    if (!modalRole) { showToast('Please select a role'); return; }
+    modalIndices.forEach(i => { translatedData[i].role = modalRole; });
+    closeRoleModal();
+    selectedRows.clear();
     translatedData.forEach((_, i) => renderRow(i));
-    showToast('Note saved');
+    updateSelectionBanner();
+    showToast(`Role saved for ${modalIndices.length} line${modalIndices.length>1?'s':''}`);
   }
 
-  function deleteNote(ni) {
-    if (notes[ni]) {
-      notes[ni].indices.forEach(i => { if (translatedData[i]) translatedData[i].noteIdx = null; });
-      notes[ni] = null;
-    }
+  function removeRoleFromModal() {
+    modalIndices.forEach(i => { translatedData[i].role=null; });
+    closeRoleModal();
+    selectedRows.clear();
     translatedData.forEach((_, i) => renderRow(i));
-    showToast('Note deleted');
+    updateSelectionBanner();
+    showToast('Role removed');
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // COPY
-  // ─────────────────────────────────────────────────────────────────────────────
-  function genderLabel(note) {
-    if (!note) return '';
-    if (note.gender === 'other') return `(${note.otherLabel || 'Other'})`;
-    const map = { male:'(Male)', female:'(Female)', kid:'(Kid)', grandma:'(Grandma)', grandpa:'(Grandpa)', uncle:'(Uncle)', aunt:'(Aunt)' };
-    return map[note.gender] || `(${note.gender})`;
+  function closeRoleModal() {
+    document.getElementById('roleModal').classList.remove('open');
+    modalIndices=[]; modalRole=''; modalMode='single';
   }
 
-  function roleShort(note) {
-    if (!note) return '';
-    if (note.gender === 'other') return note.otherLabel || 'Other';
-    const map = { male:'Male', female:'F', kid:'Kid', grandma:'GM', grandpa:'GP', uncle:'U', aunt:'A' };
-    return map[note.gender] || note.gender;
-  }
-
-  function noteFor(i) {
-    const l = translatedData[i];
-    if (l.noteIdx !== null && l.noteIdx !== undefined && notes[l.noteIdx]) return notes[l.noteIdx];
-    return null;
-  }
-
+  // ── COPY ─────────────────────────────────────────────────
   function buildGroupedKhmer() {
-    const lines = []; let lastGender = undefined;
-    translatedData.forEach((l, i) => {
+    const lines=[]; let lastRole=undefined;
+    translatedData.forEach(l => {
       if (!l.km || l.km.includes('[Translation')) return;
-      const n = noteFor(i); const g = n ? n.gender : null;
-      if (g !== null && g !== lastGender) { if (lines.length > 0) lines.push(''); lines.push(genderLabel(n)); lastGender = g; }
-      else if (g === null) { lastGender = null; }
+      if (l.role !== lastRole) {
+        if (lines.length > 0) lines.push('');
+        if (l.role) lines.push(roleSectionLabel(l.role));
+        lastRole = l.role;
+      }
       lines.push(`(${l.ts}) ${l.km}`);
     });
     return lines.join('\n');
@@ -839,31 +859,34 @@
   function copyBilingual() {
     const done = translatedData.filter(l => l.km && !l.km.includes('[Translation'));
     if (!done.length) { showToast('No translations yet'); return; }
-    const lines = []; let lastGender = undefined;
-    translatedData.forEach((l, i) => {
+    const lines=[]; let lastRole=undefined;
+    translatedData.forEach(l => {
       if (!l.km || l.km.includes('[Translation')) return;
-      const n = noteFor(i); const g = n ? n.gender : null;
-      if (g !== null && g !== lastGender) { if (lines.length > 0) lines.push(''); lines.push(genderLabel(n)); lastGender = g; }
-      else if (g === null) { lastGender = null; }
-      lines.push(`(${l.ts}) ${l.zh}`); lines.push(`(${l.ts}) ${l.km}`);
+      if (l.role !== lastRole) {
+        if (lines.length > 0) lines.push('');
+        if (l.role) lines.push(roleSectionLabel(l.role));
+        lastRole = l.role;
+      }
+      lines.push(`(${l.ts}) ${l.zh}`);
+      lines.push(`(${l.ts}) ${l.km}`);
     });
     navigator.clipboard.writeText(lines.join('\n')).then(() => showToast('Bilingual script copied'));
   }
 
   function clearAll() {
     if (isTranslating) { showToast('Please wait for translation to finish'); return; }
-    translatedData = []; parsedLines = []; notes = []; selectedRows.clear(); isSelectMode = false;
-    document.getElementById('inputText').value = '';
-    document.getElementById('parsePreview').style.display = 'none';
-    document.getElementById('resultWrap').style.display = 'none';
-    document.getElementById('progressWrap').style.display = 'none';
-    document.getElementById('headerStats').style.display = 'none';
-    document.getElementById('selectionBanner').style.display = 'none';
-    document.getElementById('translateBtn').disabled = true;
-    document.getElementById('apiBadge').style.display = 'none';
-    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display = 'none');
-    document.getElementById('sep2').style.display = 'none';
-    document.getElementById('linesContainer').innerHTML = `
+    translatedData=[]; parsedLines=[]; selectedRows.clear();
+    document.getElementById('inputText').value='';
+    document.getElementById('parsePreview').style.display='none';
+    document.getElementById('resultWrap').style.display='none';
+    document.getElementById('hintStrip').style.display='none';
+    document.getElementById('progressWrap').style.display='none';
+    document.getElementById('headerStats').style.display='none';
+    document.getElementById('selectionBanner').style.display='none';
+    document.getElementById('translateBtn').disabled=true;
+    ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='none');
+    document.getElementById('sep2').style.display='none';
+    document.getElementById('linesContainer').innerHTML=`
       <div class="empty-state">
         <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
         <div class="empty-title">No lines yet</div>
@@ -871,19 +894,19 @@
       </div>`;
   }
 
-  // ─────────────────────────────────────────────────────────────────────────────
-  // UTILS
-  // ─────────────────────────────────────────────────────────────────────────────
+  // ── UTILS ─────────────────────────────────────────────────
   function escHtml(str) {
     return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function showToast(msg) {
-    const t = document.getElementById('toast'); t.textContent = msg;
-    t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2400);
+    const t = document.getElementById('toast'); t.textContent=msg;
+    t.classList.add('show'); setTimeout(()=>t.classList.remove('show'), 2400);
   }
 
-  document.getElementById('noteModal').addEventListener('click', function(e) { if (e.target === this) closeNoteModal(); });
+  document.getElementById('roleModal').addEventListener('click', function(e) {
+    if (e.target===this) closeRoleModal();
+  });
 </script>
 </body>
 </html>
