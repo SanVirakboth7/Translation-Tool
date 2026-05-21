@@ -15,6 +15,7 @@
     --red:#dc2626;--red-light:#fef2f2;
     --amber:#d97706;--amber-light:#fffbeb;
     --purple:#7c3aed;--purple-light:#f5f3ff;
+    --pink:#db2777;--pink-light:#fdf2f8;
     --shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
     --shadow-md:0 4px 12px rgba(0,0,0,.08);
     --shadow-lg:0 8px 24px rgba(0,0,0,.1);
@@ -70,7 +71,7 @@
   .btn-purple:disabled{opacity:.45;cursor:not-allowed}
   .toolbar-sep{width:1px;height:24px;background:var(--border);margin:0 4px}
 
-  /* SELECTION BANNER */
+  /* MULTI-SELECT BANNER */
   #selectionBanner{display:none;position:sticky;top:68px;z-index:90;background:var(--purple-light);border:1px solid #c4b5fd;border-radius:var(--radius);padding:10px 14px;margin-bottom:16px;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 2px 8px rgba(124,58,237,.12)}
   .sel-info{font-size:.82rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:8px;flex-shrink:0}
   .sel-count-badge{background:var(--purple);color:#fff;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:20px;font-family:'DM Mono',monospace}
@@ -105,29 +106,26 @@
   .row-checkbox{width:16px;height:16px;cursor:pointer;accent-color:var(--purple);flex-shrink:0}
 
   .ts-cell{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);padding-top:2px;white-space:nowrap}
-
-  /* zh-cell: always clickable to toggle selection */
   .zh-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-all;cursor:pointer;border-radius:4px;padding:2px 4px;margin:-2px -4px;transition:background .12s;user-select:none}
-  .zh-cell:hover{background:#ede9fe}
-  .line-row.selected .zh-cell{color:var(--purple)}
-
+  .zh-cell:hover{background:var(--accent-light)}
+  .zh-cell.selected-state{background:#ede9fe}
   .khmer-cell{font-size:.85rem;line-height:1.6;color:var(--text);word-break:break-word}
   .khmer-cell.pending{color:var(--text-muted);font-style:italic;font-size:.78rem}
   .khmer-cell.translating{color:var(--amber);font-style:italic;font-size:.78rem}
 
-  /* NOTE BADGES — 10 roles */
+  /* ROLE BADGES */
   .note-tag{display:inline-flex;align-items:center;gap:4px;margin-top:4px;font-size:.68rem;font-weight:600;padding:2px 7px;border-radius:20px;border:1px solid}
-  .note-tag.male-lead{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
-  .note-tag.male-a{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
-  .note-tag.male-b{background:#e0f2fe;color:#0369a1;border-color:#7dd3fc}
-  .note-tag.female-lead{background:#fce7f3;color:#be185d;border-color:#f9a8d4}
-  .note-tag.female-a{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
-  .note-tag.female-b{background:#fdf4ff;color:#9333ea;border-color:#d8b4fe}
-  .note-tag.colleague{background:#f0fdf4;color:#15803d;border-color:#86efac}
-  .note-tag.sister{background:#fff7ed;color:#c2410c;border-color:#fdba74}
-  .note-tag.brother{background:#f0fdfa;color:#0f766e;border-color:#5eead4}
-  .note-tag.mom{background:#fef9c3;color:#a16207;border-color:#fde047}
-  .note-tag.dad{background:#fefce8;color:#854d0e;border-color:#fef08a}
+  .note-tag.role-main-m{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .note-tag.role-a-m{background:#dbeafe;color:#1d4ed8;border-color:#93c5fd}
+  .note-tag.role-b-m{background:#e0e7ff;color:#4338ca;border-color:#a5b4fc}
+  .note-tag.role-main-f{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .note-tag.role-a-f{background:#fce7f3;color:#be185d;border-color:#f9a8d4}
+  .note-tag.role-b-f{background:#fdf4ff;color:#9333ea;border-color:#d8b4fe}
+  .note-tag.role-colleague{background:#f0fdf4;color:#15803d;border-color:#bbf7d0}
+  .note-tag.role-sister{background:#fdf2f8;color:#db2777;border-color:#fbcfe8}
+  .note-tag.role-brother{background:#eff6ff;color:#2563eb;border-color:#bfdbfe}
+  .note-tag.role-mom{background:#fef3c7;color:#d97706;border-color:#fde68a}
+  .note-tag.role-dad{background:#f0fdfa;color:#0f766e;border-color:#99f6e4}
 
   .action-cell{display:flex;flex-direction:row;gap:4px;align-items:center}
   .icon-btn{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:5px;cursor:pointer;border:none;background:transparent;color:var(--text-muted);transition:all .12s;flex-shrink:0}
@@ -139,44 +137,117 @@
 
   .khmer-edit-input{width:100%;border:1px solid var(--accent);border-radius:4px;padding:5px 8px;font-size:.85rem;line-height:1.6;font-family:'DM Sans',sans-serif;outline:none;background:white;color:var(--text);resize:vertical;min-height:38px;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
 
-  /* MODAL */
-  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .2s}
+  /* ── MODAL ── */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:500;
+    display:flex;align-items:flex-end;justify-content:center;
+    padding:0;opacity:0;pointer-events:none;transition:opacity .2s;
+  }
+  /* Desktop: center it */
+  @media(min-width:701px){
+    .modal-overlay{align-items:center;padding:16px}
+  }
   .modal-overlay.open{opacity:1;pointer-events:all}
-  .modal{background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);width:100%;max-width:520px;overflow:hidden;transform:translateY(12px);transition:transform .2s}
+
+  .modal{
+    background:#fff;width:100%;max-width:480px;
+    display:flex;flex-direction:column;
+    transform:translateY(20px);transition:transform .25s;
+    /* Mobile: bottom sheet style, fixed height */
+    border-radius:16px 16px 0 0;
+    max-height:92vh;
+  }
+  @media(min-width:701px){
+    .modal{border-radius:14px;max-height:90vh;box-shadow:var(--shadow-lg);transform:translateY(12px)}
+  }
   .modal-overlay.open .modal{transform:translateY(0)}
-  .modal-head{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-  .modal-title{font-size:.9rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
-  .modal-title svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round}
+
+  /* Drag handle for mobile */
+  .modal-drag-handle{
+    display:flex;justify-content:center;padding:10px 0 4px;flex-shrink:0;
+  }
+  .modal-drag-handle span{width:36px;height:4px;background:var(--border);border-radius:4px;display:block}
+  @media(min-width:701px){.modal-drag-handle{display:none}}
+
+  .modal-head{
+    padding:12px 16px 10px;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    flex-shrink:0;
+  }
+  .modal-title{font-size:.88rem;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
+  .modal-title svg{width:15px;height:15px;stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round}
   .modal-close{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;cursor:pointer;color:var(--text-muted);border-radius:5px}
   .modal-close:hover{background:var(--surface);color:var(--text)}
   .modal-close svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-  .modal-body{padding:18px 20px}
-  .modal-selected-lines{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:16px;max-height:100px;overflow-y:auto}
-  .modal-selected-lines .sel-line-item{font-size:.75rem;color:var(--text-secondary);padding:2px 0;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid var(--border)}
+
+  /* Scrollable body — key fix */
+  .modal-body{
+    padding:12px 16px;
+    overflow-y:auto;
+    flex:1;
+    min-height:0;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  /* Selected lines preview — compact on mobile */
+  .modal-selected-lines{
+    background:var(--surface);border:1px solid var(--border);border-radius:8px;
+    padding:8px 10px;margin-bottom:12px;
+    max-height:60px;overflow-y:auto;
+  }
+  .modal-selected-lines .sel-line-item{font-size:.72rem;color:var(--text-secondary);padding:2px 0;display:flex;align-items:baseline;gap:6px;border-bottom:1px solid var(--border)}
   .modal-selected-lines .sel-line-item:last-child{border-bottom:none}
-  .sel-line-ts{font-family:'DM Mono',monospace;color:var(--accent);font-size:.68rem;flex-shrink:0}
+  .sel-line-ts{font-family:'DM Mono',monospace;color:var(--accent);font-size:.66rem;flex-shrink:0}
   .sel-line-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .form-label{font-size:.75rem;font-weight:600;color:var(--text-secondary);margin-bottom:8px;display:block;letter-spacing:.04em}
+  .form-label{font-size:.72rem;font-weight:600;color:var(--text-secondary);margin-bottom:6px;display:block;letter-spacing:.04em;text-transform:uppercase}
 
-  /* Role options grid — 10 roles, 2 cols */
-  .role-section-label{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
-  .role-options{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:6px}
-  .role-opt{border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;font-size:.82rem;font-weight:500;color:var(--text-secondary)}
+  /* Role group */
+  .role-group{margin-bottom:10px}
+  .role-group-label{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:5px;padding:0 2px}
+
+  /* Role grid — 2 cols on mobile, 3 on desktop (adjusted inside group) */
+  .role-options{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  @media(min-width:701px){.role-options{grid-template-columns:1fr 1fr 1fr;gap:6px}}
+
+  .role-opt{
+    border:1.5px solid var(--border);border-radius:7px;
+    padding:8px 10px;cursor:pointer;transition:all .15s;
+    display:flex;align-items:center;gap:7px;
+    font-size:.78rem;font-weight:500;color:var(--text-secondary);
+    min-height:40px;
+  }
   .role-opt:hover{border-color:var(--border-hover);background:var(--surface)}
-  .role-opt.sel-male-lead{border-color:#93c5fd;background:#dbeafe;color:#1d4ed8}
-  .role-opt.sel-male-a{border-color:#bfdbfe;background:#eff6ff;color:#2563eb}
-  .role-opt.sel-male-b{border-color:#7dd3fc;background:#e0f2fe;color:#0369a1}
-  .role-opt.sel-female-lead{border-color:#f9a8d4;background:#fce7f3;color:#be185d}
-  .role-opt.sel-female-a{border-color:#fbcfe8;background:#fdf2f8;color:#db2777}
-  .role-opt.sel-female-b{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
-  .role-opt.sel-colleague{border-color:#86efac;background:#f0fdf4;color:#15803d}
-  .role-opt.sel-sister{border-color:#fdba74;background:#fff7ed;color:#c2410c}
-  .role-opt.sel-brother{border-color:#5eead4;background:#f0fdfa;color:#0f766e}
-  .role-opt.sel-mom{border-color:#fde047;background:#fef9c3;color:#a16207}
-  .role-opt.sel-dad{border-color:#fef08a;background:#fefce8;color:#854d0e}
-  .role-opt-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;flex-shrink:0;letter-spacing:-.02em}
+  .role-opt-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0}
 
-  .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:8px}
+  /* Selected states */
+  .role-opt.sel-role-main-m{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .role-opt.sel-role-a-m{border-color:#93c5fd;background:#dbeafe;color:#1d4ed8}
+  .role-opt.sel-role-b-m{border-color:#a5b4fc;background:#e0e7ff;color:#4338ca}
+  .role-opt.sel-role-main-f{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
+  .role-opt.sel-role-a-f{border-color:#f9a8d4;background:#fce7f3;color:#be185d}
+  .role-opt.sel-role-b-f{border-color:#d8b4fe;background:#fdf4ff;color:#9333ea}
+  .role-opt.sel-role-colleague{border-color:#86efac;background:#f0fdf4;color:#15803d}
+  .role-opt.sel-role-sister{border-color:#f9a8d4;background:#fdf2f8;color:#db2777}
+  .role-opt.sel-role-brother{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+  .role-opt.sel-role-mom{border-color:#fde068;background:#fef3c7;color:#d97706}
+  .role-opt.sel-role-dad{border-color:#99f6e4;background:#f0fdfa;color:#0f766e}
+
+  .other-input-wrap{display:none;margin-top:8px}
+  .other-input-wrap.visible{display:block}
+  .other-input{width:100%;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:.82rem;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--text);transition:border-color .15s}
+  .other-input:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+
+  /* Footer — always visible at bottom, never scrolls away */
+  .modal-foot{
+    padding:10px 16px;border-top:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;gap:8px;
+    flex-shrink:0;
+    background:#fff;
+  }
+  @media(max-width:700px){
+    /* Extra bottom padding for home indicator on iOS */
+    .modal-foot{padding-bottom:max(10px, env(safe-area-inset-bottom, 10px))}
+  }
   .modal-foot-right{display:flex;gap:8px}
 
   .hint-strip{font-size:.72rem;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:6px 12px;margin-bottom:14px;display:flex;align-items:center;gap:6px}
@@ -191,7 +262,7 @@
   .empty-title{font-size:.9rem;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
   .empty-desc{font-size:.78rem;line-height:1.6;max-width:300px;margin:0 auto}
 
-  ::-webkit-scrollbar{width:6px;height:6px}
+  ::-webkit-scrollbar{width:4px;height:4px}
   ::-webkit-scrollbar-track{background:transparent}
   ::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
   ::-webkit-scrollbar-thumb:hover{background:var(--border-hover)}
@@ -208,21 +279,19 @@
     .ts-cell{display:inline-block;font-size:.68rem;padding-top:0;margin-left:28px;margin-bottom:2px}
     .zh-cell{font-size:.82rem;margin-left:28px;margin-bottom:6px;word-break:break-word}
     .khmer-cell{font-size:.82rem;margin-left:28px;padding-left:10px;border-left:2px solid var(--border);word-break:break-word;margin-bottom:4px}
-    .khmer-cell.pending,.khmer-cell.translating{font-size:.75rem}
     .action-cell{display:flex;flex-direction:row;gap:4px;margin-left:28px;margin-top:6px}
     .icon-btn{width:32px;height:32px}
+    .toolbar{gap:6px}
+    .btn{padding:8px 12px;font-size:.78rem}
+    #selectionBanner{padding:8px 10px;gap:6px}
+    .sel-info{font-size:.72rem;gap:5px}
+    .sel-actions{gap:4px}
+    .sel-actions .btn{padding:7px 8px;font-size:.7rem}
     .mobile-edit-wrap{width:100%;margin-top:6px}
     .mobile-edit-label{font-size:.68rem;color:var(--text-muted);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
     .khmer-edit-input{min-height:60px;font-size:.82rem}
     .mobile-edit-actions{display:flex;gap:8px;margin-top:8px}
     .mobile-edit-actions .btn{flex:1;justify-content:center;padding:10px 8px;font-size:.8rem}
-    .toolbar{gap:6px}
-    .btn{padding:8px 12px;font-size:.78rem}
-    #selectionBanner{padding:8px 10px;gap:6px;top:56px}
-    .sel-info{font-size:.72rem;gap:5px}
-    .sel-actions{gap:4px}
-    .sel-actions .btn{padding:7px 8px;font-size:.7rem}
-    .role-options{grid-template-columns:1fr 1fr}
   }
 </style>
 </head>
@@ -270,7 +339,7 @@
       <svg viewBox="0 0 24 24"><path d="M5 8l4 4-4 4M13 12h6"/></svg>
       Translate All
     </button>
-    <div class="toolbar-sep" id="sep2" style="display:none"></div>
+    <div class="toolbar-sep"></div>
     <button class="btn btn-outline" onclick="copyKhmerOnly()" id="copyKhBtn" style="display:none">
       <svg viewBox="0 0 24 24"><path d="M8 4v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7.2L14.8 2H10a2 2 0 0 0-2 2z"/><path d="M14 2v5h5M4 8H2v12a2 2 0 0 0 2 2h10"/></svg>
       Copy Khmer
@@ -294,7 +363,7 @@
     <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progressFill"></div></div>
   </div>
 
-  <!-- SELECTION BANNER — appears when any row is selected -->
+  <!-- MULTI-SELECT BANNER -->
   <div id="selectionBanner">
     <div class="sel-info">
       <svg viewBox="0 0 24 24" width="14" height="14" style="stroke:var(--purple);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0"><path d="M9 11l3 3L22 4"/></svg>
@@ -310,7 +379,7 @@
       </button>
       <button class="btn btn-danger" id="bulkClearRoleBtn" onclick="bulkClearRole()" disabled>
         <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-        Clear Role
+        Clear
       </button>
     </div>
   </div>
@@ -325,13 +394,13 @@
     </div>
     <div class="hint-strip" id="hintStrip" style="display:none">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      Click any Chinese line to select/deselect it. Select one or more rows, then tap Tag Role in the banner above.
+      Click any Chinese text to select / deselect rows. Then use Tag Role in the banner above.
     </div>
     <div class="table-wrap">
       <div class="table-head">
         <div class="th"></div>
         <div class="th">Time</div>
-        <div class="th">Chinese (click to select)</div>
+        <div class="th">Chinese</div>
         <div class="th">Khmer</div>
         <div class="th center">Edit</div>
       </div>
@@ -349,6 +418,7 @@
 <!-- ROLE MODAL -->
 <div class="modal-overlay" id="roleModal">
   <div class="modal">
+    <div class="modal-drag-handle"><span></span></div>
     <div class="modal-head">
       <div class="modal-title">
         <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
@@ -358,76 +428,93 @@
         <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
+
+    <!-- SCROLLABLE BODY -->
     <div class="modal-body">
-      <div style="margin-bottom:12px">
+      <div style="margin-bottom:10px">
         <div class="form-label">Selected Lines</div>
         <div class="modal-selected-lines" id="modalSelectedLines"></div>
       </div>
-      <div>
-        <div class="form-label">Speaker Role</div>
 
-        <div class="role-section-label">តួប្រុស</div>
+      <div class="form-label">Speaker Role</div>
+
+      <!-- Group: Male -->
+      <div class="role-group">
+        <div class="role-group-label">-- តួប្រុស --</div>
         <div class="role-options">
-          <div class="role-opt" id="gOpt-male-lead" onclick="selectRole('male-lead')">
-            <div class="role-opt-icon" style="background:#dbeafe;color:#1d4ed8">T.P</div>
+          <div class="role-opt" id="gOpt-role-main-m" onclick="selectRole('role-main-m')">
+            <div class="role-opt-icon" style="background:#dbeafe;color:#2563eb">M</div>
             <span>តួរប្រុស</span>
           </div>
-          <div class="role-opt" id="gOpt-male-a" onclick="selectRole('male-a')">
-            <div class="role-opt-icon" style="background:#eff6ff;color:#2563eb">PA</div>
+          <div class="role-opt" id="gOpt-role-a-m" onclick="selectRole('role-a-m')">
+            <div class="role-opt-icon" style="background:#bfdbfe;color:#1d4ed8">A</div>
             <span>ប្រុស A</span>
           </div>
-          <div class="role-opt" id="gOpt-male-b" onclick="selectRole('male-b')">
-            <div class="role-opt-icon" style="background:#e0f2fe;color:#0369a1">PB</div>
+          <div class="role-opt" id="gOpt-role-b-m" onclick="selectRole('role-b-m')">
+            <div class="role-opt-icon" style="background:#c7d2fe;color:#4338ca">B</div>
             <span>ប្រុស B</span>
           </div>
-          <div class="role-opt" id="gOpt-brother" onclick="selectRole('brother')">
-            <div class="role-opt-icon" style="background:#f0fdfa;color:#0f766e">BP</div>
+          <div class="role-opt" id="gOpt-role-brother" onclick="selectRole('role-brother')">
+            <div class="role-opt-icon" style="background:#dbeafe;color:#2563eb">Br</div>
             <span>ប្អូនប្រុស</span>
           </div>
-          <div class="role-opt" id="gOpt-dad" onclick="selectRole('dad')">
-            <div class="role-opt-icon" style="background:#fefce8;color:#854d0e">P</div>
+          <div class="role-opt" id="gOpt-role-dad" onclick="selectRole('role-dad')">
+            <div class="role-opt-icon" style="background:#ccfbf1;color:#0f766e">Pa</div>
             <span>ប៉ា</span>
           </div>
         </div>
+      </div>
 
-        <div class="role-section-label">តួស្រី</div>
+      <!-- Group: Female -->
+      <div class="role-group">
+        <div class="role-group-label">-- តួស្រី --</div>
         <div class="role-options">
-          <div class="role-opt" id="gOpt-female-lead" onclick="selectRole('female-lead')">
-            <div class="role-opt-icon" style="background:#fce7f3;color:#be185d">T.S</div>
+          <div class="role-opt" id="gOpt-role-main-f" onclick="selectRole('role-main-f')">
+            <div class="role-opt-icon" style="background:#fce7f3;color:#db2777">F</div>
             <span>តួរស្រី</span>
           </div>
-          <div class="role-opt" id="gOpt-female-a" onclick="selectRole('female-a')">
-            <div class="role-opt-icon" style="background:#fdf2f8;color:#db2777">SA</div>
+          <div class="role-opt" id="gOpt-role-a-f" onclick="selectRole('role-a-f')">
+            <div class="role-opt-icon" style="background:#fbcfe8;color:#be185d">A</div>
             <span>ស្រី A</span>
           </div>
-          <div class="role-opt" id="gOpt-female-b" onclick="selectRole('female-b')">
-            <div class="role-opt-icon" style="background:#fdf4ff;color:#9333ea">SB</div>
+          <div class="role-opt" id="gOpt-role-b-f" onclick="selectRole('role-b-f')">
+            <div class="role-opt-icon" style="background:#f5d0fe;color:#9333ea">B</div>
             <span>ស្រី B</span>
           </div>
-          <div class="role-opt" id="gOpt-sister" onclick="selectRole('sister')">
-            <div class="role-opt-icon" style="background:#fff7ed;color:#c2410c">BS</div>
+          <div class="role-opt" id="gOpt-role-sister" onclick="selectRole('role-sister')">
+            <div class="role-opt-icon" style="background:#fce7f3;color:#db2777">Ss</div>
             <span>ប្អូនស្រី</span>
           </div>
-          <div class="role-opt" id="gOpt-mom" onclick="selectRole('mom')">
-            <div class="role-opt-icon" style="background:#fef9c3;color:#a16207">M</div>
+          <div class="role-opt" id="gOpt-role-mom" onclick="selectRole('role-mom')">
+            <div class="role-opt-icon" style="background:#fef3c7;color:#d97706">Ma</div>
             <span>ម៉ាក់</span>
           </div>
         </div>
+      </div>
 
-        <div class="role-section-label">ផ្សេងៗ</div>
-        <div class="role-options" style="grid-template-columns:1fr">
-          <div class="role-opt" id="gOpt-colleague" onclick="selectRole('colleague')">
-            <div class="role-opt-icon" style="background:#f0fdf4;color:#15803d">MK</div>
+      <!-- Group: Other -->
+      <div class="role-group">
+        <div class="role-group-label">-- ផ្សេងៗ --</div>
+        <div class="role-options">
+          <div class="role-opt" id="gOpt-role-colleague" onclick="selectRole('role-colleague')">
+            <div class="role-opt-icon" style="background:#dcfce7;color:#15803d">Co</div>
             <span>មិត្តរួមការងារ</span>
           </div>
         </div>
       </div>
+
+      <div class="other-input-wrap" id="otherInputWrap">
+        <input type="text" class="other-input" id="otherLabelInput" placeholder="Describe this role..." maxlength="40"/>
+      </div>
     </div>
+    <!-- END SCROLLABLE BODY -->
+
+    <!-- STICKY FOOTER — always visible -->
     <div class="modal-foot">
       <div>
         <button class="btn btn-danger" id="removeRoleBtn" onclick="removeRoleFromModal()" style="display:none">
           <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-          Remove Role
+          Remove
         </button>
       </div>
       <div class="modal-foot-right">
@@ -455,30 +542,33 @@
   let modalMode = 'single';
 
   const ALL_ROLES = [
-    'male-lead','male-a','male-b','female-lead','female-a','female-b',
-    'colleague','sister','brother','mom','dad'
+    'role-main-m','role-a-m','role-b-m','role-brother','role-dad',
+    'role-main-f','role-a-f','role-b-f','role-sister','role-mom',
+    'role-colleague'
   ];
 
   const ROLE_LABELS = {
-    'male-lead': 'តួរប្រុស',
-    'male-a':    'ប្រុស A',
-    'male-b':    'ប្រុស B',
-    'female-lead':'តួរស្រី',
-    'female-a':  'ស្រី A',
-    'female-b':  'ស្រី B',
-    'colleague': 'មិត្តរួមការងារ',
-    'sister':    'ប្អូនស្រី',
-    'brother':   'ប្អូនប្រុស',
-    'mom':       'ម៉ាក់',
-    'dad':       'ប៉ា'
+    'role-main-m': 'តួរប្រុស',
+    'role-a-m':    'ប្រុស A',
+    'role-b-m':    'ប្រុស B',
+    'role-brother':'ប្អូនប្រុស',
+    'role-dad':    'ប៉ា',
+    'role-main-f': 'តួរស្រី',
+    'role-a-f':    'ស្រី A',
+    'role-b-f':    'ស្រី B',
+    'role-sister': 'ប្អូនស្រី',
+    'role-mom':    'ម៉ាក់',
+    'role-colleague':'មិត្តរួមការងារ',
   };
 
-  function roleLabel(role) {
-    return ROLE_LABELS[role] || role || '';
+  function roleLabel(role, otherLabel) {
+    if (!role) return '';
+    if (role === 'other') return otherLabel || 'ផ្សេង';
+    return ROLE_LABELS[role] || role;
   }
 
-  function roleSectionLabel(role) {
-    return '[' + roleLabel(role) + ']';
+  function roleSectionLabel(role, otherLabel) {
+    return '[' + roleLabel(role, otherLabel) + ']';
   }
 
   // ── PARSE ─────────────────────────────────────────────────
@@ -488,7 +578,7 @@
     let m;
     while ((m = pattern.exec(raw)) !== null) {
       const ts = m[1].trim(), text = m[2].trim();
-      if (ts && text) results.push({ ts, zh: text, km: '', status: 'pending', role: null });
+      if (ts && text) results.push({ ts, zh: text, km: '', status: 'pending', role: null, otherLabel: '' });
     }
     return results;
   }
@@ -501,10 +591,9 @@
     if (!raw) { preview.style.display='none'; parsedLines=[]; btn.disabled=true; return; }
     parsedLines = parseSubtitleText(raw);
     if (!parsedLines.length) { preview.style.display='none'; btn.disabled=true; return; }
-    preview.style.display='block';
-    chips.innerHTML='';
-    const max = 8;
-    parsedLines.slice(0, max).forEach(l => {
+    preview.style.display='block'; chips.innerHTML='';
+    const max=8;
+    parsedLines.slice(0,max).forEach(l => {
       const c = document.createElement('div'); c.className='parse-chip';
       c.innerHTML=`<span class="ts">(${l.ts})</span>${escHtml(l.zh)}`; chips.appendChild(c);
     });
@@ -518,8 +607,7 @@
   function clearInput() {
     document.getElementById('inputText').value='';
     document.getElementById('parsePreview').style.display='none';
-    parsedLines=[];
-    document.getElementById('translateBtn').disabled=true;
+    parsedLines=[]; document.getElementById('translateBtn').disabled=true;
   }
 
   // ── TRANSLATION ───────────────────────────────────────────
@@ -551,18 +639,14 @@
   async function startTranslation() {
     if (isTranslating || !parsedLines.length) return;
     isTranslating = true;
-    selectedRows.clear();
-    translatedData = parsedLines.map(l => ({...l, km:'', status:'pending', role:null}));
+    translatedData = parsedLines.map(l => ({...l, km:'', status:'pending', role:null, otherLabel:''}));
     document.getElementById('resultWrap').style.display='block';
     document.getElementById('hintStrip').style.display='flex';
     document.getElementById('headerStats').style.display='flex';
     document.getElementById('progressWrap').style.display='block';
-    document.getElementById('selectionBanner').style.display='none';
     document.getElementById('translateBtn').disabled=true;
     ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='none');
-    document.getElementById('sep2').style.display='none';
-    renderTable();
-    updateHeaderStats();
+    renderTable(); updateHeaderStats();
     const total = translatedData.length;
     document.getElementById('lineCountBadge').textContent=`${total} lines`;
     for (let i=0; i<total; i++) {
@@ -580,8 +664,7 @@
     document.getElementById('progressLabel').style.color='var(--green)';
     document.getElementById('translateBtn').disabled=false;
     ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='inline-flex');
-    document.getElementById('sep2').style.display='block';
-    showToast('Done — click any Chinese line to select it, then Tag Role');
+    showToast('Done — click any Chinese line to select and tag role');
   }
 
   function updateProgress(done, total, label) {
@@ -623,12 +706,14 @@
         onchange="onCheckChange(${i},this.checked)" onclick="event.stopPropagation()"/>
     </div>`;
 
-    // zh-cell always toggles selection on click
+    // Click on Chinese text toggles selection
     const isDone = l.status==='done' || l.status==='error';
-    const zhClickAttr = isDone
-      ? `onclick="toggleRowSelect(${i});event.stopPropagation()" title="Click to select"`
-      : `title="Waiting for translation"`;
-    const zhCell = `<div class="zh-cell" ${zhClickAttr}>${escHtml(l.zh)}</div>`;
+    const zhClickHandler = isDone
+      ? `onclick="toggleRowSelect(${i});event.stopPropagation()"`
+      : '';
+    const zhTitle = isDone ? 'Click to select for role tagging' : '';
+    const zhClass = `zh-cell${isSelected?' selected-state':''}`;
+    const zhCell = `<div class="${zhClass}" ${zhClickHandler} title="${zhTitle}">${escHtml(l.zh)}</div>`;
 
     let kmContent = '';
     if (l.status==='pending') {
@@ -637,9 +722,7 @@
       kmContent = `<div class="khmer-cell translating">Translating...</div>`;
     } else {
       let badge = '';
-      if (l.role) {
-        badge = `<div class="note-tag ${l.role}">${roleLabel(l.role)}</div>`;
-      }
+      if (l.role) badge = `<div class="note-tag ${l.role}">${roleLabel(l.role, l.otherLabel)}</div>`;
       kmContent = `<div class="khmer-cell">${escHtml(l.km)}${badge}</div>`;
     }
 
@@ -721,29 +804,22 @@
 
   function cancelEdit(i) { renderRow(i); }
 
-  // ── SELECTION (always-on — no separate mode toggle needed) ─
+  // ── SELECTION ─────────────────────────────────────────────
   function toggleRowSelect(i) {
-    const l = translatedData[i];
-    if (l.status !== 'done' && l.status !== 'error') return;
+    if (translatedData[i].status !== 'done' && translatedData[i].status !== 'error') return;
     if (selectedRows.has(i)) selectedRows.delete(i); else selectedRows.add(i);
-    renderRow(i);
-    updateSelectionBanner();
+    renderRow(i); updateSelectionUI();
   }
 
   function onCheckChange(i, checked) {
     if (checked) selectedRows.add(i); else selectedRows.delete(i);
-    renderRow(i);
-    updateSelectionBanner();
+    renderRow(i); updateSelectionUI();
   }
 
-  function updateSelectionBanner() {
+  function updateSelectionUI() {
     const n = selectedRows.size;
     const banner = document.getElementById('selectionBanner');
-    if (n > 0) {
-      banner.style.display='flex';
-    } else {
-      banner.style.display='none';
-    }
+    banner.style.display = n > 0 ? 'flex' : 'none';
     document.getElementById('selCountText').textContent=`${n} row${n!==1?'s':''} selected`;
     document.getElementById('selCountBadge').textContent=n;
     document.getElementById('bulkRoleBtn').disabled=n===0;
@@ -752,36 +828,30 @@
 
   function selectAll() {
     translatedData.forEach((l, i) => { if (l.status==='done'||l.status==='error') selectedRows.add(i); });
-    translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionBanner();
+    translatedData.forEach((_, i) => renderRow(i)); updateSelectionUI();
   }
 
   function clearSelection() {
     selectedRows.clear();
-    translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionBanner();
+    translatedData.forEach((_, i) => renderRow(i)); updateSelectionUI();
   }
 
   function bulkClearRole() {
-    selectedRows.forEach(i => { translatedData[i].role=null; });
-    selectedRows.clear();
+    selectedRows.forEach(i => { translatedData[i].role=null; translatedData[i].otherLabel=''; });
     translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionBanner();
-    showToast('Roles removed from selected rows');
+    showToast('Roles removed'); clearSelection();
   }
 
   // ── ROLE MODAL ────────────────────────────────────────────
   function openBulkRoleModal() {
     if (!selectedRows.size) { showToast('Select at least one row'); return; }
     modalIndices = [...selectedRows].sort((a,b)=>a-b);
-    modalMode = modalIndices.length === 1 ? 'single' : 'multi';
-    modalRole = modalIndices.length === 1 ? (translatedData[modalIndices[0]].role || '') : '';
-    document.getElementById('modalTitleText').textContent =
-      modalIndices.length === 1 ? 'Tag Speaker Role' : `Tag Role — ${modalIndices.length} rows`;
+    modalMode = 'multi';
+    modalRole = '';
+    document.getElementById('modalTitleText').textContent = `Tag Role — ${modalIndices.length} rows`;
     populateModalLines(modalIndices);
-    prefillRole(modalRole);
-    const showRemove = modalIndices.length === 1 && !!translatedData[modalIndices[0]].role;
-    document.getElementById('removeRoleBtn').style.display = showRemove ? 'inline-flex' : 'none';
+    prefillRole('', '');
+    document.getElementById('removeRoleBtn').style.display='none';
     document.getElementById('roleModal').classList.add('open');
   }
 
@@ -795,12 +865,16 @@
     });
   }
 
-  function prefillRole(role) {
+  function prefillRole(role, otherLabel) {
     modalRole = role || '';
     ALL_ROLES.forEach(r => {
       const el = document.getElementById(`gOpt-${r}`); if (!el) return;
       el.className = 'role-opt' + (r===role ? ` sel-${r}` : '');
     });
+    const wrap = document.getElementById('otherInputWrap');
+    const inp = document.getElementById('otherLabelInput');
+    if (role==='other') { wrap.classList.add('visible'); inp.value=otherLabel; }
+    else { wrap.classList.remove('visible'); inp.value=''; }
   }
 
   function selectRole(r) {
@@ -809,24 +883,33 @@
       const el = document.getElementById(`gOpt-${opt}`); if (!el) return;
       el.className = 'role-opt' + (opt===r ? ` sel-${opt}` : '');
     });
+    const wrap = document.getElementById('otherInputWrap');
+    if (r==='other') { wrap.classList.add('visible'); document.getElementById('otherLabelInput').focus(); }
+    else wrap.classList.remove('visible');
   }
 
   function saveRole() {
     if (!modalRole) { showToast('Please select a role'); return; }
-    modalIndices.forEach(i => { translatedData[i].role = modalRole; });
+    let otherLabel = '';
+    if (modalRole==='other') {
+      otherLabel = document.getElementById('otherLabelInput').value.trim();
+      if (!otherLabel) { showToast('Please describe the role'); return; }
+    }
+    modalIndices.forEach(i => {
+      translatedData[i].role = modalRole;
+      translatedData[i].otherLabel = otherLabel;
+    });
     closeRoleModal();
-    selectedRows.clear();
     translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionBanner();
+    clearSelection();
     showToast(`Role saved for ${modalIndices.length} line${modalIndices.length>1?'s':''}`);
   }
 
   function removeRoleFromModal() {
-    modalIndices.forEach(i => { translatedData[i].role=null; });
+    modalIndices.forEach(i => { translatedData[i].role=null; translatedData[i].otherLabel=''; });
     closeRoleModal();
-    selectedRows.clear();
     translatedData.forEach((_, i) => renderRow(i));
-    updateSelectionBanner();
+    clearSelection();
     showToast('Role removed');
   }
 
@@ -837,13 +920,14 @@
 
   // ── COPY ─────────────────────────────────────────────────
   function buildGroupedKhmer() {
-    const lines=[]; let lastRole=undefined;
+    const lines=[]; let lastRoleKey=undefined;
     translatedData.forEach(l => {
       if (!l.km || l.km.includes('[Translation')) return;
-      if (l.role !== lastRole) {
+      const rk = l.role ? (l.role + '|' + l.otherLabel) : null;
+      if (rk !== lastRoleKey) {
         if (lines.length > 0) lines.push('');
-        if (l.role) lines.push(roleSectionLabel(l.role));
-        lastRole = l.role;
+        if (l.role) lines.push(roleSectionLabel(l.role, l.otherLabel));
+        lastRoleKey = rk;
       }
       lines.push(`(${l.ts}) ${l.km}`);
     });
@@ -859,13 +943,14 @@
   function copyBilingual() {
     const done = translatedData.filter(l => l.km && !l.km.includes('[Translation'));
     if (!done.length) { showToast('No translations yet'); return; }
-    const lines=[]; let lastRole=undefined;
+    const lines=[]; let lastRoleKey=undefined;
     translatedData.forEach(l => {
       if (!l.km || l.km.includes('[Translation')) return;
-      if (l.role !== lastRole) {
+      const rk = l.role ? (l.role + '|' + l.otherLabel) : null;
+      if (rk !== lastRoleKey) {
         if (lines.length > 0) lines.push('');
-        if (l.role) lines.push(roleSectionLabel(l.role));
-        lastRole = l.role;
+        if (l.role) lines.push(roleSectionLabel(l.role, l.otherLabel));
+        lastRoleKey = rk;
       }
       lines.push(`(${l.ts}) ${l.zh}`);
       lines.push(`(${l.ts}) ${l.km}`);
@@ -885,7 +970,6 @@
     document.getElementById('selectionBanner').style.display='none';
     document.getElementById('translateBtn').disabled=true;
     ['copyKhBtn','copyBiBtn','clearAllBtn'].forEach(id => document.getElementById(id).style.display='none');
-    document.getElementById('sep2').style.display='none';
     document.getElementById('linesContainer').innerHTML=`
       <div class="empty-state">
         <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
