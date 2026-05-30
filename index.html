@@ -62,56 +62,30 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .btn-green:hover{background:#dcfce7}
 .btn-sm{padding:5px 10px;font-size:.72rem}
 
-/* LINES BOX */
 .lines-box{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative}
-
-/* STATIC TOP TOOLBAR (select all / deselect / copy) */
 .lines-toolbar{background:var(--surface);padding:8px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .sep{width:1px;height:20px;background:var(--border)}
 
-/* FLOATING TAG-ROLE BAR — sticky inside right column */
 .float-tag-bar{
-  position:sticky;
-  bottom:14px;
-  z-index:50;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  background:#fff;
-  border:1.5px solid #ddd6fe;
-  border-radius:40px;
-  box-shadow:0 4px 20px rgba(124,58,237,.18);
-  width:fit-content;
-  margin:10px auto 0;
-  pointer-events:all;
-  opacity:0;
-  transform:translateY(8px);
-  transition:opacity .2s,transform .2s;
+  position:sticky;bottom:14px;z-index:50;display:flex;align-items:center;gap:8px;
+  padding:8px 12px;background:#fff;border:1.5px solid #ddd6fe;border-radius:40px;
+  box-shadow:0 4px 20px rgba(124,58,237,.18);width:fit-content;margin:10px auto 0;
+  pointer-events:all;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;
 }
 .float-tag-bar.visible{opacity:1;transform:translateY(0)}
-.float-tag-bar .sel-count{
-  font-size:.72rem;font-weight:700;font-family:'DM Mono',monospace;
-  background:var(--purple);color:#fff;padding:2px 8px;border-radius:20px;
-}
+.float-tag-bar .sel-count{font-size:.72rem;font-weight:700;font-family:'DM Mono',monospace;background:var(--purple);color:#fff;padding:2px 8px;border-radius:20px;}
 
-.sel-banner{display:none;background:var(--purple-bg);border-bottom:1px solid #ddd6fe;padding:7px 12px;align-items:center;justify-content:space-between;gap:8px}
-.sel-info{font-size:.78rem;color:var(--purple);font-weight:500;display:flex;align-items:center;gap:6px}
-.sel-badge{background:var(--purple);color:#fff;font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:20px;font-family:'DM Mono',monospace}
-.sel-acts{display:flex;gap:5px}
-
-/* DRAG SELECTION VISUAL */
 .line-row{
   display:grid;grid-template-columns:32px 52px 1fr 60px;
   padding:10px 12px;border-bottom:1px solid var(--border);
   gap:8px;align-items:center;transition:background .08s;
-  cursor:default;touch-action:pan-y;
+  cursor:default;
   position:relative;
 }
 .line-row:last-child{border-bottom:none}
 .line-row:hover{background:var(--surface)}
 .line-row.selected{background:#f5f3ff;border-left:3px solid var(--purple);padding-left:9px}
-.line-row.drag-hover{background:#ede9fe !important;}
+.line-row.drag-over{background:#ede9fe !important;}
 
 .check-wrap{display:flex;align-items:center;justify-content:center}
 .cb{width:16px;height:16px;cursor:pointer;accent-color:var(--purple);flex-shrink:0}
@@ -147,7 +121,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .empty-title{font-size:.82rem;font-weight:500;color:var(--text-2);margin-bottom:4px}
 .empty-desc{font-size:.74rem;line-height:1.6}
 
-/* FILTER PANEL */
 .filter-panel-layout{display:grid;grid-template-columns:180px 1fr;gap:14px;align-items:start}
 @media(max-width:540px){.filter-panel-layout{grid-template-columns:1fr}}
 .role-sidebar{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:sticky;top:100px}
@@ -167,7 +140,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .f-line:last-child{border-bottom:none}
 .f-line:hover{background:var(--surface)}
 
-/* ROLE POPUP MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:200;display:flex;align-items:flex-end;justify-content:center;padding:0;opacity:0;pointer-events:none;transition:opacity .18s}
 @media(min-width:500px){.modal-overlay{align-items:center;padding:16px}}
 .modal-overlay.open{opacity:1;pointer-events:all}
@@ -197,7 +169,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
 .custom-inp.show{display:block}
 .custom-inp:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(124,58,237,.08)}
 
-/* filter paste modal */
 .fpmodal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:300;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .18s}
 .fpmodal-overlay.open{opacity:1;pointer-events:all}
 .fpmodal{background:#fff;width:100%;max-width:460px;border-radius:14px;box-shadow:0 8px 32px rgba(0,0,0,.12);transform:translateY(10px);transition:transform .2s;display:flex;flex-direction:column;max-height:82vh}
@@ -269,7 +240,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);fon
         <div id="linesContainer"></div>
       </div>
 
-      <!-- FLOATING TAG ROLE BAR -->
       <div class="float-tag-bar" id="floatTagBar">
         <span class="sel-count" id="floatCount">0</span>
         <span style="font-size:.74rem;color:var(--text-2);font-weight:500">selected</span>
@@ -425,6 +395,8 @@ let dragStartIdx=-1;
 let dragMode='select';
 let dragLastIdx=-1;
 let dragSelectedSnapshot=new Set();
+// cached row rects for touch hit-testing (rebuilt each drag start)
+let rowRects=[];
 
 const ROLE_LABELS={'main-m':'តួប្រុស','a-m':'ប្រុស A','b-m':'ប្រុស B','brother':'ប្អូនប្រុស','dad':'ប៉ា','main-f':'តួស្រី','a-f':'ស្រី A','b-f':'ស្រី B','sister':'ប្អូនស្រី','mom':'ម៉ាក់','colleague':'មិត្តការងារ','custom':'ផ្សេងទៀត'};
 const ROLE_DOTS={'main-m':'#2563eb','a-m':'#1d4ed8','b-m':'#4338ca','brother':'#3b82f6','dad':'#0f766e','main-f':'#db2777','a-f':'#be185d','b-f':'#9333ea','sister':'#ec4899','mom':'#d97706','colleague':'#15803d','custom':'#5b21b6'};
@@ -479,59 +451,74 @@ function buildRow(i){
       <button class="icon-btn ib-edit" onclick="startEdit(${i})" title="Edit"><svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>
       <button class="icon-btn ib-del" onclick="deleteLine(${i})" title="Delete"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
     </div>`;
-  // attach drag events
   row.addEventListener('mousedown',onRowMouseDown,{passive:false});
-  row.addEventListener('touchstart',onRowTouchStart,{passive:true});
+  row.addEventListener('touchstart',onRowTouchStart,{passive:false});
   return row;
 }
 function rerenderRow(i){
   const old=document.getElementById(`row-${i}`);
   if(!old)return;
-  const newRow=buildRow(i);
-  old.replaceWith(newRow);
+  old.replaceWith(buildRow(i));
 }
 function rerenderRowQuick(i){
   const row=document.getElementById(`row-${i}`);
   if(!row)return;
-  row.className='line-row'+(selected.has(i)?' selected':'');
+  const isSel=selected.has(i);
+  row.className='line-row'+(isSel?' selected':'');
   const cb=row.querySelector('.cb');
-  if(cb)cb.checked=selected.has(i);
+  if(cb)cb.checked=isSel;
 }
 
-// ── DRAG SELECTION (accurate version) ──
-// We use pointer events for mouse and touch tracking via document listeners
-// dragLastIdx tracks which row we last processed to avoid redundant work
-
-function getRowIdx(el){
-  const r=el.closest('.line-row');
-  return r?parseInt(r.dataset.idx):-1;
+// ── DRAG HELPERS ──
+function buildRowRects(){
+  rowRects=[];
+  lines.forEach((_,i)=>{
+    const el=document.getElementById(`row-${i}`);
+    if(el){
+      const r=el.getBoundingClientRect();
+      rowRects.push({i,top:r.top,bottom:r.bottom});
+    }
+  });
 }
 
-function applyDragRange(fromIdx,toIdx){
-  // Apply drag from dragStartIdx to current toIdx
+// Given a clientY, find which row index the finger is over using cached rects.
+// Rects were captured at drag-start but rows don't move during a drag,
+// so this is accurate even as the page scrolls — we just offset by scroll delta.
+function rowIdxAtY(clientY){
+  for(let k=0;k<rowRects.length;k++){
+    const rr=rowRects[k];
+    if(clientY>=rr.top&&clientY<=rr.bottom)return rr.i;
+  }
+  // finger above first row
+  if(rowRects.length&&clientY<rowRects[0].top)return rowRects[0].i;
+  // finger below last row
+  if(rowRects.length&&clientY>rowRects[rowRects.length-1].bottom)return rowRects[rowRects.length-1].i;
+  return -1;
+}
+
+function applyDragRange(toIdx){
   const mn=Math.min(dragStartIdx,toIdx);
   const mx=Math.max(dragStartIdx,toIdx);
-  // Restore snapshot then apply new range
   selected=new Set(dragSelectedSnapshot);
   for(let j=mn;j<=mx;j++){
     if(dragMode==='select')selected.add(j);
     else selected.delete(j);
   }
-  // Update visuals for all rows in the union of old and new range
   lines.forEach((_,j)=>rerenderRowQuick(j));
   updateFloatBar();
 }
 
+// ── MOUSE DRAG ──
 function onRowMouseDown(e){
   if(e.target.classList.contains('cb')||e.target.closest('button')||e.target.tagName==='TEXTAREA')return;
-  const i=getRowIdx(e.target);
-  if(i<0)return;
+  const i=parseInt(this.dataset.idx);
+  if(isNaN(i))return;
   isDragging=true;
   dragStartIdx=i;
   dragLastIdx=i;
   dragSelectedSnapshot=new Set(selected);
   dragMode=selected.has(i)?'deselect':'select';
-  applyDragRange(i,i);
+  applyDragRange(i);
   e.preventDefault();
 }
 
@@ -539,48 +526,58 @@ document.addEventListener('mousemove',e=>{
   if(!isDragging)return;
   const el=document.elementFromPoint(e.clientX,e.clientY);
   if(!el)return;
-  const i=getRowIdx(el);
-  if(i<0||i===dragLastIdx)return;
+  const row=el.closest('.line-row');
+  if(!row)return;
+  const i=parseInt(row.dataset.idx);
+  if(isNaN(i)||i===dragLastIdx)return;
   dragLastIdx=i;
-  // add visual hover hint
-  document.querySelectorAll('.line-row.drag-hover').forEach(r=>r.classList.remove('drag-hover'));
-  const hRow=document.getElementById(`row-${i}`);
-  if(hRow)hRow.classList.add('drag-hover');
-  applyDragRange(dragStartIdx,i);
+  document.querySelectorAll('.line-row.drag-over').forEach(r=>r.classList.remove('drag-over'));
+  row.classList.add('drag-over');
+  applyDragRange(i);
 });
 
 document.addEventListener('mouseup',()=>{
   if(isDragging){
     isDragging=false;
-    document.querySelectorAll('.line-row.drag-hover').forEach(r=>r.classList.remove('drag-hover'));
+    document.querySelectorAll('.line-row.drag-over').forEach(r=>r.classList.remove('drag-over'));
   }
 });
 
-// Touch drag
+// ── TOUCH DRAG — getBoundingClientRect-based, no elementFromPoint ──
 function onRowTouchStart(e){
   if(e.target.classList.contains('cb')||e.target.closest('button'))return;
-  const i=getRowIdx(e.target);
-  if(i<0)return;
+  const i=parseInt(this.dataset.idx);
+  if(isNaN(i))return;
+
+  // Snapshot rects BEFORE any scrolling happens during this gesture
+  buildRowRects();
+
   isDragging=true;
   dragStartIdx=i;
   dragLastIdx=i;
   dragSelectedSnapshot=new Set(selected);
   dragMode=selected.has(i)?'deselect':'select';
-  applyDragRange(i,i);
+  applyDragRange(i);
+
+  // Prevent page scroll while dragging over the list
+  e.preventDefault();
 }
 
 document.addEventListener('touchmove',e=>{
   if(!isDragging)return;
-  const t=e.touches[0];
-  const el=document.elementFromPoint(t.clientX,t.clientY);
-  if(!el)return;
-  const i=getRowIdx(el);
+  const touch=e.touches[0];
+
+  // Recompute rects on every move so scroll-induced position changes are handled
+  buildRowRects();
+
+  const i=rowIdxAtY(touch.clientY);
   if(i<0||i===dragLastIdx)return;
   dragLastIdx=i;
-  applyDragRange(dragStartIdx,i);
-},{passive:true});
+  applyDragRange(i);
+},{passive:false});
 
-document.addEventListener('touchend',()=>{isDragging=false;});
+document.addEventListener('touchend',()=>{isDragging=false;rowRects=[];});
+document.addEventListener('touchcancel',()=>{isDragging=false;rowRects=[];});
 
 // ── CHECKBOX ──
 function onCheck(i,checked){
@@ -613,9 +610,8 @@ function clearSel(){selected.clear();lines.forEach((_,i)=>rerenderRowQuick(i));u
 // ── FLOATING TAG BAR ──
 function updateFloatBar(){
   const n=selected.size;
-  const bar=document.getElementById('floatTagBar');
   document.getElementById('floatCount').textContent=n;
-  bar.classList.toggle('visible',n>0);
+  document.getElementById('floatTagBar').classList.toggle('visible',n>0);
 }
 
 // ── ROLE MODAL ──
